@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace prjWorkout
+namespace HealthHelperMobileApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PageWorkoutLogList : ContentPage
