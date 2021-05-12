@@ -14,6 +14,8 @@ namespace HealthHelperMobileApp
         public MainPage()
         {
             InitializeComponent();
+
+            
         }
         private void BtnLogin_Clicked(object sender, EventArgs e)
         {
@@ -24,6 +26,17 @@ namespace HealthHelperMobileApp
             this.Navigation.PushAsync(new PageSignUp());
         }
 
-     
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+
+            CALFactory alFactory = new CALFactory();
+            alFactory.insert();
+
+            //CWCFatory wcFatory = new CWCFatory();
+            //wcFatory.insert();
+
+            //CWFactory wFactory = new CWFactory();
+            //wFactory.insert();
+        }
     }
 }

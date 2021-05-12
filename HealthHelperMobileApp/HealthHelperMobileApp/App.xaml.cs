@@ -26,6 +26,7 @@ namespace HealthHelperMobileApp
             InitializeComponent();
 
             MainPage = new NavigationPage(new MainPage());
+            //MainPage = new NavigationPage(new PgWorkoutLog());
         }
 
         protected override void OnStart()
