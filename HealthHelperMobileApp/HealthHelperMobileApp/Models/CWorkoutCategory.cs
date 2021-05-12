@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace prjWorkout.Models
+namespace HealthHelperMobileApp.Models
 {
     class CWorkoutCategory
     {

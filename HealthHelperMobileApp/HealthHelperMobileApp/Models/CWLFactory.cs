@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows;
 using Xamarin.Forms;
 
-namespace prjWorkout.Models
+namespace HealthHelperMobileApp.Models
 {
     class CWLFactory
     {
