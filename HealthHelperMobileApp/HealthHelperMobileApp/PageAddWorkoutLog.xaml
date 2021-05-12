@@ -1,12 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HealthHelperMobileApp.PageWorkoutLog">
+             x:Class="HealthHelperMobileApp.PageAddWorkoutLog">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="歡迎來到運動中心" FontSize="30"
-                VerticalOptions="Start" 
-                HorizontalOptions="FillAndExpand" />
+            <Label Text="新增運動紀錄" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="30"
+                   BackgroundColor="MidnightBlue"
+                   Padding="10"/>
             <Picker x:Name="pkrAL" FontSize="30"
                 ItemDisplayBinding="{Binding Description}"
                 SelectedIndexChanged="pkrWCAL_SelectedIndexChanged"
@@ -28,15 +31,10 @@
                 HorizontalOptions="FillAndExpand"></Entry>
             <Label x:Name="lblHoursTest"
                    TextColor="Red"></Label>
-            <StackLayout Orientation="Horizontal">
-                <Button x:Name="btnSubmit" FontSize="30" Text="送出"
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Button x:Name="btnSubmit" FontSize="30" Text="送出" BackgroundColor="DodgerBlue" TextColor="White"
                     Clicked="btnSubmit_Click"
-                    VerticalOptions="Start"  
-                    HorizontalOptions="CenterAndExpand"></Button>
-                <Button x:Name="btnBrowse" FontSize="30" Text="瀏覽"
-                    Clicked="btnBrows_Click"
-                    VerticalOptions="Start"  
-                    HorizontalOptions="CenterAndExpand"></Button>
+                    VerticalOptions="End"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

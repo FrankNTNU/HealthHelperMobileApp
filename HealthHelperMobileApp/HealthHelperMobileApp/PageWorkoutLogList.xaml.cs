@@ -16,5 +16,10 @@ namespace HealthHelperMobileApp
         {
             InitializeComponent();
         }
+
+        private void btnAddWL_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new PageAddWorkoutLog());
+        }
     }
 }

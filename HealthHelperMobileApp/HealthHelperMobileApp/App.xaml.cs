@@ -13,12 +13,19 @@ namespace HealthHelperMobileApp
         static SQLiteAsyncConnection db;
         public static SQLiteAsyncConnection GetConnection()
         {
-            string folder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string path = Path.Combine(folder, "HH.db");
             if (db == null)
                 db = new SQLiteAsyncConnection(path);
             db.CreateTableAsync<CMember>();
             db.CreateTableAsync<CMeal>();
+
+            //恩旗
+            db.CreateTableAsync<CActivityLevel>();
+            db.CreateTableAsync<CWorkoutCategory>();
+            db.CreateTableAsync<CWorkout>();
+            db.CreateTableAsync<CWorkoutLog>();
+
             return db;
         }
         public App()
@@ -26,7 +33,7 @@ namespace HealthHelperMobileApp
             InitializeComponent();
 
             MainPage = new NavigationPage(new MainPage());
-            //MainPage = new NavigationPage(new PgWorkoutLog());
+            //MainPage = new NavigationPage(new PageAddWorkoutLog());
         }
 
         protected override void OnStart()

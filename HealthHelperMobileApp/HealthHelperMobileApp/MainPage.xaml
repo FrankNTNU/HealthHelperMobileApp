@@ -28,10 +28,9 @@
                     FontSize="30" 
                     TextColor="White"
                     Clicked="BtnSignup_Clicked"/>
-            
         </StackLayout>
         <Button x:Name="btnInsert" Clicked="btnInsert_Click"
-                Text="新增"></Button>
+                Text="新增Workout Data"></Button>
     </StackLayout>
    
 
