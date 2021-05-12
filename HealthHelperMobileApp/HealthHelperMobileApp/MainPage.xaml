@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthHelperMobileApp.MainPage">
+
+    <StackLayout Spacing="0">
+        <Frame BackgroundColor="MidnightBlue" Padding="24" CornerRadius="0">
+            <Label Text="HealthHelper" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="50"/>
+            
+        </Frame>
+        <Image Source="health.jpg"/>
+        <Label Text="登入健康小助手啟用更多功能!" 
+               FontSize="Title" 
+               Padding="30,10,30,10"
+               HorizontalTextAlignment="Center"
+               TextColor="Black"/>
+        <StackLayout Spacing="10">
+            <Button Text="登入" 
+                    BackgroundColor="green" 
+                    FontSize="30" 
+                    TextColor="White"
+                    Clicked="BtnLogin_Clicked"/>
+            <Button Text="註冊" 
+                    BackgroundColor="DodgerBlue" 
+                    FontSize="30" 
+                    TextColor="White"
+                    Clicked="BtnSignup_Clicked"/>
+            
+        </StackLayout>
+    </StackLayout>
+   
+
+</ContentPage>

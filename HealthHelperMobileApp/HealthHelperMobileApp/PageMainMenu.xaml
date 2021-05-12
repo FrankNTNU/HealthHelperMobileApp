@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthHelperMobileApp.PageMainMenu">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="HealthHelper 選單" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="30"
+                   BackgroundColor="MidnightBlue"
+                   Padding="10"/>
+            <ScrollView>
+                <StackLayout>
+                    <Button Text="會員   " 
+                            HeightRequest="100" FontSize="35"
+                            BackgroundColor="#a6d8ff"
+                            Clicked="BtnMember_Clicked"
+                            ImageSource="person.png"/>
+                    <Button Text="飲食   " 
+                            HeightRequest="100" FontSize="35"
+                            TextColor="Black" 
+                            ImageSource="food.png"
+                            Clicked="BtnMeal_Clicked"/>
+                    <Button Text="運動   " 
+                            HeightRequest="100" FontSize="35"
+                            BackgroundColor="#a6d8ff" 
+                            ImageSource="workout1.png"/>
+                    <Button Text="紀錄   " 
+                            HeightRequest="100" FontSize="35"
+                            TextColor="Black" 
+                            ImageSource="statistic.png"/>
+                    <Button Text="留言板   " 
+                            HeightRequest="100" FontSize="35"
+                            TextColor="Black" 
+                            ImageSource="comment.png"
+                            BackgroundColor="#a6d8ff"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

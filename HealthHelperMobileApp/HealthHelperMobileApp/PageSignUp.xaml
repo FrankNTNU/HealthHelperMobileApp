@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthHelperMobileApp.PageSignUp">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+            <Label Text="加入 HealthHelper" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="30"
+                   BackgroundColor="MidnightBlue"
+                   Padding="10"/>
+            <Label x:Name="Message"
+                   FontSize="20"
+                   TextColor="red"
+                   HorizontalOptions="CenterAndExpand"
+                   Padding="10"/>
+            <StackLayout Margin="20" >
+                <Label Text="建立您的帳號"
+                   FontSize="25"
+                   TextColor="black" />
+                <Entry Placeholder="使用者帳號" 
+                       Margin="0, 20, 0, 20" 
+                       FontSize="25" 
+                       x:Name="UserName"/>
+                <Entry Placeholder="Email" 
+                       Margin="0, 20, 0, 20" 
+                       FontSize="25" 
+                       x:Name="Email"/>
+                <Entry Placeholder="密碼" 
+                       Margin="0, 20, 0, 20" 
+                       IsPassword="True"
+                       FontSize="25"
+                       x:Name="Password1"/>
+                <Entry Placeholder="確認密碼" 
+                       Margin="0, 20, 0, 20" 
+                       IsPassword="True" 
+                       FontSize="25"
+                       x:Name="Password2"/>
+                <Button Text="註冊" 
+                    BackgroundColor="DodgerBlue" 
+                    FontSize="30" 
+                    TextColor="White"
+                    Clicked="BtnSignup_Clicked"/>
+            </StackLayout>
+           
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

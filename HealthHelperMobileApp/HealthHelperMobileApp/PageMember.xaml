@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthHelperMobileApp.PageMember">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="HealthHelper 會員" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="30"
+                   BackgroundColor="MidnightBlue"
+                   Padding="10"/>
+            <ScrollView>
+                <StackLayout>
+                    <Label Text="會員編號:"
+                       TextColor="Black"
+                       FontSize="30"
+                       BackgroundColor="LightGray"
+                       Padding="10"/>
+                    <Entry x:Name="lblID"
+                       TextColor="Black"
+                       FontSize="30"
+                       IsEnabled="False"/>
+                    <Label Text="會員帳號:"
+                       TextColor="Black"
+                       FontSize="30"
+                       BackgroundColor="LightGray" Padding="10"/>
+                    <Entry x:Name="txtUserName"
+                       TextColor="Black"
+                       FontSize="30"/>
+                    <Label Text="電子郵件:"
+                       TextColor="Black"
+                       FontSize="30"
+                       BackgroundColor="LightGray" Padding="10"/>
+                    <Entry x:Name="txtEmail"
+                       TextColor="Black"
+                       FontSize="30"/>
+                    <Button Text="修改"
+                        FontSize="30"
+                        BackgroundColor="LightSkyBlue"
+                        Clicked="BtnUpdate_Clicked"/>
+                </StackLayout>
+            </ScrollView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

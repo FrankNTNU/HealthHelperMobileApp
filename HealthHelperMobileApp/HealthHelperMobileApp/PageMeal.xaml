@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthHelperMobileApp.PageMeal">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="HealthHelper 餐點" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="30"
+                   BackgroundColor="MidnightBlue"
+                   Padding="10"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="搜尋:"
+                       TextColor="Black"
+                       FontSize="25"
+                       Padding="10"
+                       HorizontalOptions="Start"/>
+                    <Entry x:Name="keyword"
+                       TextChanged="keyword_TextChanged"
+                       FontSize="30"
+                       HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <Button Text="新增" TextColor="Black" FontSize="30" 
+                        BackgroundColor="MediumAquamarine"
+                        Clicked="BtnAdd_Clicked"/>
+                <Button Text="排序"
+                       TextColor="Black"
+                       FontSize="30"
+                       Clicked="BtnSort_Clicked"/>
+                <CollectionView x:Name="cvMeals">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10">
+                                <Label FontSize="30" Text="{Binding Name}" TextColor="Black"/>
+                                <Label FontSize="25" Text="{Binding TotalCalories}" TextColor="blue"/>
+                                <Image Source="{Binding Image}"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>
