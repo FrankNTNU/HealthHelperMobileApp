@@ -20,13 +20,13 @@
                 SelectedIndexChanged="pkrWCAL_SelectedIndexChanged"
                 VerticalOptions="Start"  
                 HorizontalOptions="FillAndExpand"></Picker>
-            <Picker x:Name="pkrWorkout" FontSize="30"
+            <Picker x:Name="pkrWorkout" FontSize="30" Title="運動項目"
                 ItemDisplayBinding="{Binding Name}"
                 VerticalOptions="Start"  
                 HorizontalOptions="FillAndExpand"></Picker>
             <Label x:Name="lblWTest"
                    TextColor="Red"></Label>
-            <Entry x:Name="txtHours" FontSize="30"
+            <Entry x:Name="txtHours" FontSize="30" Placeholder="運動了多久(小時)"
                 VerticalOptions="Start"  
                 HorizontalOptions="FillAndExpand"></Entry>
             <Label x:Name="lblHoursTest"

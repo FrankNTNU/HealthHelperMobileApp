@@ -13,7 +13,7 @@ namespace HealthHelperMobileApp
         static SQLiteAsyncConnection db;
         public static SQLiteAsyncConnection GetConnection()
         {
-            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string path = Path.Combine(folder, "HH.db");
             if (db == null)
                 db = new SQLiteAsyncConnection(path);
