@@ -8,41 +8,41 @@
                    HorizontalTextAlignment="Center" 
                    TextColor="White"
                    FontSize="30"
-                   BackgroundColor="MidnightBlue"
+                   BackgroundColor="DarkGreen"
                    Padding="10"/>
-            <ScrollView>
-                <StackLayout>
-                    <Label Text="餐點名稱:"
+            <Label Text="餐點名稱:"
                        TextColor="Black"
+                       FontSize="25"/>
+            <Entry x:Name="txtName"
+                       TextColor="blue"
                        FontSize="30"
-                       BackgroundColor="LightGray"
-                       Padding="10"/>
-                    <Entry x:Name="txtName"
+                   Text="{Binding Name}"/>
+            <Label Text="卡路里 (大卡):"
                        TextColor="Black"
-                       FontSize="30"/>
-                    
-                    <Label Text="卡路里:"
-                       TextColor="Black"
+                       FontSize="25"/>
+            <Entry x:Name="txtCalories"
+                       TextColor="red"
                        FontSize="30"
-                       BackgroundColor="LightGray" Padding="10"/>
-                    <Entry x:Name="txtCalories"
+                   Text="{Binding Calories}"/>
+            <Label Text="份量:"
                        TextColor="Black"
-                       FontSize="30"/>
-                    
-                    <Label Text="份量:"
-                       TextColor="Black"
+                       FontSize="25"/>
+            <Entry x:Name="txtPortion"
+                       TextColor="black"
                        FontSize="30"
-                       BackgroundColor="LightGray" Padding="10"/>
-                    <Entry x:Name="txtPortion"
+                   Text="{Binding Portion}"/>
+            <Label Text="圖片檔:"
                        TextColor="Black"
-                       FontSize="30"/>
-
-                    <Button Text="新增"
-                        FontSize="30"
-                        BackgroundColor="MediumAquamarine"
-                        Clicked="BtnAdd_Clicked"/>
-                </StackLayout>
-            </ScrollView>
+                       FontSize="25"/>
+            <Entry x:Name="txtImage"
+                       TextColor="black"
+                       FontSize="30"
+                   Text="{Binding Image}"/>
+            <Button x:Name="btnAdd"
+                            Text="新增" FontSize="30"
+                            BackgroundColor="MediumAquamarine"
+                            HorizontalOptions="FillAndExpand"
+                            Clicked="btnAdd_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,21 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HealthHelperMobileApp"
              x:Class="HealthHelperMobileApp.PageMealDetail">
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="HealthHelper 餐點" 
+        <StackLayout x:Name="slMeal">
+            <Label Text="HealthHelper 餐點細節" 
                    HorizontalTextAlignment="Center" 
                    TextColor="White"
                    FontSize="30"
-                   BackgroundColor="MidnightBlue"
+                   BackgroundColor="DarkGreen"
                    Padding="10"/>
-            <Label x:Name="lblName"
-                   TextColor="Black"
-                   FontSize="30"/>
-            <Label x:Name="lblCalories"
-                   TextColor="Black"
-                   FontSize="30"/>
+            <ScrollView>
+                <StackLayout Padding="10">
+                    <Image x:Name="imageArea"
+                       Source="{Binding Image}"/>
+                    <Label Text="餐點編號:"
+                       TextColor="Black"
+                       FontSize="25"/>
+                    <Label x:Name="lblID"
+                       TextColor="Black"
+                       FontSize="30"
+                       Text="{Binding ID}"/>
+                    <Label Text="餐點名稱:"
+                       TextColor="Black"
+                       FontSize="25"/>
+                    <Entry x:Name="lblName"
+                       TextColor="blue"
+                       FontSize="30"
+                       Text="{Binding Name}"/>
+                    <Label Text="卡路里 (大卡):"
+                       TextColor="Black"
+                       FontSize="25"/>
+                    <Entry x:Name="lblCalories"
+                       TextColor="red"
+                       FontSize="30"
+                       Text="{Binding Calories}"/>
+                    <Label Text="份量:"
+                       TextColor="Black"
+                       FontSize="25"/>
+                    <Entry x:Name="lblPortion"
+                       TextColor="black"
+                       FontSize="30"
+                       Text="{Binding Portion}"/>
+                    <Label Text="圖片檔:"
+                       TextColor="Black"
+                       FontSize="25"/>
+                    <Entry x:Name="txtImage"
+                       TextColor="black"
+                       FontSize="30"
+                       Text="{Binding Image}"/>
+                    <Button x:Name="btnAdd"
+                            Text="加入紀錄" FontSize="30"
+                            BackgroundColor="MediumAquamarine"
+                            HorizontalOptions="FillAndExpand"
+                            Clicked="BtnAdd_Clicked"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Button x:Name="btnLike"
+                            Text="收藏" FontSize="25"
+                            ImageSource="like.png"
+                            BackgroundColor="MistyRose"
+                            HorizontalOptions="FillAndExpand"
+                            Clicked="BtnLike_Clicked"/>
+                        <Button Text="評論" FontSize="25"
+                            HorizontalOptions="FillAndExpand"
+                            ImageSource="comment.png"
+                            BackgroundColor="LightGray"
+                            Clicked="BtnComment_Clicked"/>
+                    </StackLayout>
+                    <Button Text="修改"
+                        TextColor="Black"
+                        FontSize="30"
+                        BackgroundColor="LightSkyBlue"
+                        Clicked="BtnUpdate_Clicked"/>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

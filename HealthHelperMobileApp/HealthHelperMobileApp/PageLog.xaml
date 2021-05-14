@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthHelperMobileApp.PageLog">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="HealthHelper 飲食紀錄" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="30"
+                   BackgroundColor="DarkGreen"
+                   Padding="10"/>
+            <Button Text="排序"
+                    TextColor="Black"
+                    FontSize="30"
+                    BackgroundColor="LightSkyBlue"
+                    Clicked="BtnSort_Clicked"/>
+            <CollectionView x:Name="cvLog"
+                            SelectedItem="{Binding CDietLog}"
+                            SelectionMode="Single"
+                            SelectionChanged="CvLog_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="25" Text="{Binding Date}" TextColor="black"
+                                           Grid.Row="0"/>
+                            <Label FontSize="25" Text="{Binding Calories}" TextColor="blue"
+                                           Grid.Row="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

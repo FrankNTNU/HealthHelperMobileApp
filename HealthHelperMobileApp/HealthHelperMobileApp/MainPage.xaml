@@ -4,7 +4,7 @@
              x:Class="HealthHelperMobileApp.MainPage">
 
     <StackLayout Spacing="0">
-        <Frame BackgroundColor="MidnightBlue" Padding="24" CornerRadius="0">
+        <Frame BackgroundColor="DarkGreen" Padding="24" CornerRadius="0">
             <Label Text="HealthHelper" 
                    HorizontalTextAlignment="Center" 
                    TextColor="White"

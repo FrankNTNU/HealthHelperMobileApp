@@ -16,7 +16,7 @@ namespace HealthHelperMobileApp
         public PageMember()
         {
             InitializeComponent();
-            CMember member = App.member;
+            CMember member = App.SelectedMember;
             lblID.Text = member.ID.ToString();
             txtUserName.Text = member.Name;
             txtEmail.Text = member.Email;
@@ -24,16 +24,16 @@ namespace HealthHelperMobileApp
 
         private void BtnUpdate_Clicked(object sender, EventArgs e)
         {
-            if (App.member.Name == txtUserName.Text ||
-                App.member.Email == txtEmail.Text)
+            if (App.SelectedMember.Name == txtUserName.Text &&
+                App.SelectedMember.Email == txtEmail.Text)
             {
                 DisplayAlert("訊息", "已輸入欲修改資訊", "確認");
             }
             else
             {
-                App.member.Name = txtUserName.Text;
-                App.member.Email = txtEmail.Text;
-                new CMemberFactory().Update(App.member);
+                App.SelectedMember.Name = txtUserName.Text;
+                App.SelectedMember.Email = txtEmail.Text;
+                new CMemberFactory().Update(App.SelectedMember);
                 DisplayAlert("訊息", "已修改資訊", "確認");
             }
         }

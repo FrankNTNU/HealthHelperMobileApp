@@ -26,5 +26,11 @@ namespace HealthHelperMobileApp
         {
             Navigation.PushAsync(new PageMeal());
         }
+
+        private void BtnLog_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new PageLog());
+
+        }
     }
 }
