@@ -8,7 +8,7 @@
                    HorizontalTextAlignment="Center" 
                    TextColor="White"
                    FontSize="30"
-                   BackgroundColor="MidnightBlue"
+                   BackgroundColor="DarkGreen"
                    Padding="10"/>
             <ScrollView>
                 <StackLayout>
@@ -29,12 +29,8 @@
                     <Button Text="紀錄   " 
                             HeightRequest="100" FontSize="35"
                             TextColor="Black" 
-                            ImageSource="statistic.png"/>
-                    <Button Text="留言板   " 
-                            HeightRequest="100" FontSize="35"
-                            TextColor="Black" 
-                            ImageSource="comment.png"
-                            BackgroundColor="#a6d8ff"/>
+                            ImageSource="statistic.png"
+                            Clicked="BtnLog_Clicked"/>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

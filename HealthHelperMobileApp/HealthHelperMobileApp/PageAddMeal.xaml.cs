@@ -18,32 +18,29 @@ namespace HealthHelperMobileApp
             InitializeComponent();
         }
 
-        private void BtnAdd_Clicked(object sender, EventArgs e)
+        private void btnAdd_Clicked(object sender, EventArgs e)
         {
-            double portion;
+            CMeal meal = new CMeal();
             if (string.IsNullOrEmpty(txtName.Text) ||
-                string.IsNullOrEmpty(txtCalories.Text) ||
-                string.IsNullOrEmpty(txtPortion.Text))
+               string.IsNullOrEmpty(txtImage.Text) ||
+               string.IsNullOrEmpty(txtPortion.Text))
             {
                 DisplayAlert("錯誤", "請填入所有欄位", "返回");
             }
-            else if (!double.TryParse(txtCalories.Text, out portion))
+            else if (!double.TryParse(txtCalories.Text, out double calories))
             {
                 DisplayAlert("錯誤", "請輸入正確的卡路里格式", "返回");
             }
             else
             {
-                CMeal meal = new CMeal()
-                {
-                    Name = txtName.Text,
-                    Calories = portion,
-                    Portion = txtPortion.Text
-                };
+                meal.Name = txtName.Text;
+                meal.Calories = calories;
+                meal.Portion = txtPortion.Text;
+                meal.Image = txtImage.Text;
                 new CMealFactory().Add(meal);
-                DisplayAlert("訊息", "已成功新增餐點", "確認");
+                DisplayAlert("訊息", "已更新成功", "確認");
                 Navigation.PopAsync();
             }
-           
         }
     }
 }
