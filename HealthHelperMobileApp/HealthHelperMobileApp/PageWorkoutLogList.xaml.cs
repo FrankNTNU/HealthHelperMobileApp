@@ -27,5 +27,10 @@ namespace HealthHelperMobileApp
         {
             this.BindingContext = new CWLViewModel();
         }
+
+        private void btnWLChart_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new PageWLChart());
+        }
     }
 }

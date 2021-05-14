@@ -18,7 +18,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
-                            <Label Text="{Binding WorkoutName, Mode=OneWay}" FontSize="20" TextColor="Green"></Label>
+                            <Label Text="{Binding Workout.Name, Mode=OneWay}" FontSize="20" TextColor="Green"></Label>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding WorkoutHours, Mode=OneWay, StringFormat='做了{0:#.00}小時，'}" FontSize="20"></Label>
                                 <Label Text="{Binding WorkoutTotalCal, Mode=OneWay, StringFormat='消耗了{0:#.00}卡路里'}" FontSize="20"></Label>
@@ -30,10 +30,15 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <Button Text="新增運動紀錄" 
-                    BackgroundColor="DodgerBlue" 
+                    BackgroundColor="Green" 
                     FontSize="30" 
                     TextColor="White"
                     Clicked="btnAddWL_Clicked"/>
+            <Button Text="顯示報表" 
+                    BackgroundColor="DodgerBlue" 
+                    FontSize="30" 
+                    TextColor="White"
+                    Clicked="btnWLChart_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
