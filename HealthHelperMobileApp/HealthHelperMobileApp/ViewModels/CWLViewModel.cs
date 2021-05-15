@@ -150,7 +150,9 @@ namespace HealthHelperMobileApp.ViewModels
             get
             {
                 var q = from wl in WorkoutLogs
+                        where wl.EditTime.Date > DateTime.Now.AddDays(-7)
                         group wl by wl.EditTime.Date into g
+                        orderby g.Key
                         select new ChartEntry((float)g.Sum(wl => wl.WorkoutTotalCal))
                         {
                             Color = SKColor.Parse(ColorList[colorIndex].ToHex()),
@@ -170,7 +172,9 @@ namespace HealthHelperMobileApp.ViewModels
             get
             {
                 var q = from wl in WorkoutLogs
+                        where wl.EditTime.Date > DateTime.Now.AddDays(-7)
                         group wl by wl.EditTime.Date into g
+                        orderby g.Key
                         select new ChartEntry((float)g.Sum(wl => wl.WorkoutHours))
                         {
                             Color = SKColor.Parse(ColorList[colorIndex].ToHex()),

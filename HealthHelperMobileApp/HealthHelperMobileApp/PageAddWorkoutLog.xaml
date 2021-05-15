@@ -11,30 +11,33 @@
                    BackgroundColor="MidnightBlue"
                    Padding="10"/>
             <Picker x:Name="pkrAL" FontSize="30"
-                ItemDisplayBinding="{Binding Description}"
-                SelectedIndexChanged="pkrWCAL_SelectedIndexChanged"
-                VerticalOptions="Start" 
-                HorizontalOptions="FillAndExpand"></Picker>
+                    ItemDisplayBinding="{Binding Description}"
+                    SelectedIndexChanged="pkrWCAL_SelectedIndexChanged"
+                    VerticalOptions="Start" 
+                    HorizontalOptions="FillAndExpand"></Picker>
             <Picker x:Name="pkrWC" FontSize="30"
                 ItemDisplayBinding="{Binding Name}"
                 SelectedIndexChanged="pkrWCAL_SelectedIndexChanged"
                 VerticalOptions="Start"  
                 HorizontalOptions="FillAndExpand"></Picker>
             <Picker x:Name="pkrWorkout" FontSize="30" Title="運動項目"
-                ItemDisplayBinding="{Binding Name}"
-                VerticalOptions="Start"  
-                HorizontalOptions="FillAndExpand"></Picker>
+                    ItemDisplayBinding="{Binding Name}"
+                    VerticalOptions="Start"  
+                    HorizontalOptions="FillAndExpand"></Picker>
             <Label x:Name="lblWTest"
                    TextColor="Red"></Label>
             <Entry x:Name="txtHours" FontSize="30" Placeholder="運動了多久(小時)"
-                VerticalOptions="Start"  
-                HorizontalOptions="FillAndExpand"></Entry>
+                   VerticalOptions="Start"  
+                   HorizontalOptions="FillAndExpand"></Entry>
             <Label x:Name="lblHoursTest"
                    TextColor="Red"></Label>
+            <DatePicker x:Name="dpEditTime"
+                        MinimumDate="01/01/2021"
+                        MaximumDate="12/31/2021"></DatePicker>
             <StackLayout VerticalOptions="EndAndExpand">
                 <Button x:Name="btnSubmit" FontSize="30" Text="送出" BackgroundColor="DodgerBlue" TextColor="White"
-                    Clicked="btnSubmit_Click"
-                    VerticalOptions="End"></Button>
+                        Clicked="btnSubmit_Click"
+                        VerticalOptions="End"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
