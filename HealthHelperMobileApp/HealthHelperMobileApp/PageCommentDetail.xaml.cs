@@ -19,20 +19,23 @@ namespace HealthHelperMobileApp
         {
             InitializeComponent();
             _comment = comment;
-            lblMember.Text = comment.MemberName;
-            lblMealName.Text = comment.MealName;
-            txtTitle.Text = comment.Title;
-            txtContent.Text = comment.Content;
-            lblDate.Text = comment.AddDateString;
-            bool isWriter = App.SelectedMember.ID == comment.MemberID;
+
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            lblMember.Text = _comment.MemberName;
+            lblMealName.Text = _comment.MealName;
+            txtTitle.Text = _comment.Title;
+            txtContent.Text = _comment.Content;
+            lblDate.Text = _comment.AddDateString;
+            bool isWriter = App.SelectedMember.ID == _comment.MemberID;
             slButtons.IsVisible = isWriter;
             txtTitle.IsReadOnly = !isWriter;
             txtContent.IsReadOnly = !isWriter;
             slReplySection.IsVisible = !isWriter;
             cvReplySection.ItemsSource = new CCommentFactory().GetReplies(_comment.ID);
-            
         }
-
         private void BtnUpdate_Clicked(object sender, EventArgs e)
         {
             _comment.Title = txtTitle.Text;
@@ -68,6 +71,15 @@ namespace HealthHelperMobileApp
                 new CCommentFactory().Add(reply);
                 DisplayAlert("訊息", "已新增回覆", "返回");
                 Navigation.PopAsync();
+            }
+        }
+
+        private void CvReplySection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CComment selectedReply = e.CurrentSelection.First() as CComment;
+            if (selectedReply.MemberID == App.SelectedMember.ID)
+            {
+                Navigation.PushAsync(new PageEditReply(selectedReply));
             }
         }
     }
