@@ -32,7 +32,6 @@ namespace HealthHelperMobileApp
         {
             InitializeComponent();
             MainPage = new NavigationPage(new MainPage());
-            //App.GetConnection().DeleteAllAsync<CNutrient>();
         }
 
         protected override void OnStart()

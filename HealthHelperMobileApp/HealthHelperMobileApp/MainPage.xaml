@@ -30,6 +30,8 @@
                     Clicked="BtnSignup_Clicked"/>
             
         </StackLayout>
+        <Button x:Name="btnInsert" Clicked="btnInsert_Click"
+                Text="新增"></Button>
     </StackLayout>
    
 

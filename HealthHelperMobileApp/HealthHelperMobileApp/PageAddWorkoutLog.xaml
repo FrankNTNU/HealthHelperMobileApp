@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthHelperMobileApp.PageWorkoutLog">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="歡迎來到運動中心" FontSize="30"
+                VerticalOptions="Start" 
+                HorizontalOptions="FillAndExpand" />
+            <Picker x:Name="pkrAL" FontSize="30"
+                ItemDisplayBinding="{Binding Description}"
+                SelectedIndexChanged="pkrWCAL_SelectedIndexChanged"
+                VerticalOptions="Start" 
+                HorizontalOptions="FillAndExpand"></Picker>
+            <Picker x:Name="pkrWC" FontSize="30"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedIndexChanged="pkrWCAL_SelectedIndexChanged"
+                VerticalOptions="Start"  
+                HorizontalOptions="FillAndExpand"></Picker>
+            <Picker x:Name="pkrWorkout" FontSize="30"
+                ItemDisplayBinding="{Binding Name}"
+                VerticalOptions="Start"  
+                HorizontalOptions="FillAndExpand"></Picker>
+            <Label x:Name="lblWTest"
+                   TextColor="Red"></Label>
+            <Entry x:Name="txtHours" FontSize="30"
+                VerticalOptions="Start"  
+                HorizontalOptions="FillAndExpand"></Entry>
+            <Label x:Name="lblHoursTest"
+                   TextColor="Red"></Label>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="btnSubmit" FontSize="30" Text="送出"
+                    Clicked="btnSubmit_Click"
+                    VerticalOptions="Start"  
+                    HorizontalOptions="CenterAndExpand"></Button>
+                <Button x:Name="btnBrowse" FontSize="30" Text="瀏覽"
+                    Clicked="btnBrows_Click"
+                    VerticalOptions="Start"  
+                    HorizontalOptions="CenterAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
