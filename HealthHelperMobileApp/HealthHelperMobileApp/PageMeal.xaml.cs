@@ -19,12 +19,14 @@ namespace HealthHelperMobileApp
         {
             InitializeComponent();
             BindingContext = new MealViewModel(this.Navigation);
+            
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             cvMeals.ItemsSource = new CMealFactory().GetMeals();
+            keyword.Text = "";
         }
         private void BtnAdd_Clicked(object sender, EventArgs e)
         {

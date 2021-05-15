@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace HealthHelperMobileApp.Models
 {
     public class CMealFactory
     {
      
-        public void Add(CMeal meal)
+        public async void Add(CMeal meal)
         {
-            App.GetConnection().InsertAsync(meal);
+            await App.GetConnection().InsertAsync(meal);
         }
         public List<CMeal> GetMeals()
         {
@@ -79,6 +80,10 @@ namespace HealthHelperMobileApp.Models
             }
             
             
+        }
+        public void Delete(CMeal meal)
+        {
+            App.GetConnection().DeleteAsync(meal);
         }
     }
 }

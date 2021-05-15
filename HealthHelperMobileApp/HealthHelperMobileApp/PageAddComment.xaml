@@ -17,7 +17,7 @@
                 <Label Text="標題:" TextColor="Black" FontSize="20"/>
                 <Entry x:Name="txtTitle" TextColor="Black" FontSize="20"/>
                 <Label Text="留言內容:" TextColor="Black" FontSize="20"/>
-                <Entry x:Name="txtComment" TextColor="Black" FontSize="20"/>
+                <Editor x:Name="txtComment" TextColor="Black" FontSize="20"/>
             </StackLayout>
             <Button Text="新增" TextColor="Black" FontSize="30" BackgroundColor="MediumAquamarine"
                     Clicked="BtnAdd_Clicked"/>

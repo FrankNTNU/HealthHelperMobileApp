@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthHelperMobileApp.PageCommentDetail">
+    <ContentPage.Content>
+
+        <StackLayout>
+            <Label Text="HealthHelper 評論資訊" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="30"
+                   BackgroundColor="DarkGreen"
+                   Padding="10"/>
+            <ScrollView>
+            <StackLayout>
+                <StackLayout BackgroundColor="#c7ecff">
+                    <StackLayout Orientation="Horizontal" Padding="5">
+                        <Label Text="評論者" TextColor="Black" FontSize="20" />
+                        <Label x:Name="lblMember" Text="{Binding MemberName}" TextColor="Black" FontSize="20" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Padding="5">
+                        <Label Text="日期" TextColor="Black" FontSize="20"/>
+                        <Label x:Name="lblDate" Text="{Binding AddDate}" TextColor="Black" FontSize="20" />
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Padding="8">
+                    <Label Text="標題" TextColor="Black" FontSize="20"/>
+                    <Entry x:Name="txtTitle" Text="{Binding Title}" TextColor="red" FontSize="25" />
+                    <Label Text="評論餐點" TextColor="Black" FontSize="20"/>
+                    <Label x:Name="lblMealName" Text="{Binding MealName}" TextColor="Black" FontSize="20"/>
+                    <Label Text="內容" TextColor="Black" FontSize="20"/>
+                    <Editor x:Name="txtContent" Text="{Binding Content}" TextColor="blue" FontSize="25"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" x:Name="slButtons">
+                    <Button Text="修改"
+                        TextColor="Black"
+                        FontSize="25"
+                        BackgroundColor="LightSkyBlue"
+                        HorizontalOptions="FillAndExpand"
+                        ImageSource="pencil.png"
+                        Clicked="BtnUpdate_Clicked"/>
+                    <Button Text="刪除"
+                        TextColor="Black"
+                        FontSize="25"
+                        BackgroundColor="#fc9a95"
+                        HorizontalOptions="FillAndExpand"
+                        ImageSource="cross.png"
+                        Clicked="BtnDelete_Clicked"/>
+                </StackLayout>
+
+
+                <StackLayout x:Name="slReplySection">
+                        <Label Text="撰寫留言"
+                       TextColor="Black"
+                       FontSize="25"
+                       HorizontalTextAlignment="Center"
+                            BackgroundColor="LightGray" Padding="5"/>
+                        <Editor x:Name="txtReply"
+                        TextColor="Black"
+                        FontSize="30"/>
+                    <Button Text="回覆" 
+                        x:Name="btnReply"
+                        TextColor="Black"
+                        ImageSource="comment.png"
+                        FontSize="25"
+                        BackgroundColor="MediumAquamarine"
+                        Clicked="BtnReply_Clicked"/>
+                </StackLayout>
+                <CollectionView ItemsSource="{Binding CComment}" x:Name="cvReplySection">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout BackgroundColor="#c7ecff">
+                                <StackLayout Orientation="Horizontal" Padding="5">
+                                    <Label Text="評論者" TextColor="Black" FontSize="20" />
+                                    <Label x:Name="lblMember" Text="{Binding MemberName}" TextColor="Black" FontSize="20" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Padding="5">
+                                    <Label Text="日期" TextColor="Black" FontSize="20"/>
+                                    <Label x:Name="lblDate" Text="{Binding AddDate}" TextColor="Black" FontSize="20" />
+                                </StackLayout>
+                                    <StackLayout Padding="5">
+                                        <Label Text="回覆內容" TextColor="Black" FontSize="20"/>
+                                        <Editor x:Name="txtContent" Text="{Binding Content}" TextColor="blue" FontSize="25"
+                                                IsReadOnly="True"/>
+                                    </StackLayout>
+                                </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            </ScrollView>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
