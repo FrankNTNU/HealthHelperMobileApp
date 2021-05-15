@@ -32,7 +32,7 @@ namespace HealthHelperMobileApp.ViewModels
             }
         }
 
-        public List<ChartEntry> Entries
+        public List<ChartEntry> alEntries
         {
             get
             {
@@ -46,16 +46,38 @@ namespace HealthHelperMobileApp.ViewModels
                         };
 
                 return q.ToList();
+            }
+        }
 
-                //return WorkoutLogs.Select(wl =>
-                //{
-                //    return new ChartEntry((float)wl.WorkoutTotalCal)
-                //    {
-                //        Color = SKColor.Parse("#FF1493"),
-                //        Label = wl.ActivityLevel.Description,
-                //        ValueLabel = wl.WorkoutTotalCal.ToString()
-                //    };
-                //}).ToList();
+        //todo
+        //public List<ChartEntry> wcEntries
+        //{
+        //    //get
+        //    //{
+        //    //    var q = from wl in WorkoutLogs
+        //    //            group wl by wl.WorkoutCategory.ID into g
+        //    //            select new ChartEntry((float)g.Sum(wl => wl.WorkoutTotalCal))
+        //    //            {
+        //    //                Color = SKColor.Parse(GetColorByALID(g.Key)),
+        //    //                Label = g.FirstOrDefault().ActivityLevel.Description,
+        //    //                ValueLabel = ((float)g.Sum(wl => wl.WorkoutTotalCal)).ToString(),
+        //    //            };
+        //    //}
+        //}
+
+        public List<CChartList> ChartLists
+        {
+            get
+            {
+                List<CChartList> chartLists = new List<CChartList>();
+
+                chartLists.Add(new CChartList { Name = "Bar", entryList = alEntries });
+                chartLists.Add(new CChartList { Name = "Bar", entryList = alEntries });
+                chartLists.Add(new CChartList { Name = "Bar", entryList = alEntries });
+                chartLists.Add(new CChartList { Name = "Bar", entryList = alEntries });
+                chartLists.Add(new CChartList { Name = "Bar", entryList = alEntries });
+
+                return chartLists;
             }
         }
 
@@ -73,5 +95,11 @@ namespace HealthHelperMobileApp.ViewModels
                     return Color.SeaGreen.ToHex();
             }
         }
+    }
+
+    class CChartList
+    {
+        public string Name { get; set; }
+        public List<ChartEntry> entryList { get; set; }
     }
 }
