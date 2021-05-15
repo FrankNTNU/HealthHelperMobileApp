@@ -75,13 +75,13 @@ namespace HealthHelperMobileApp.ViewModels
                 Chart = new LineChart
                 {
                     Entries = weekHourEntries,
-                    LabelTextSize = 50,
+                    LabelTextSize = 45,
                     Typeface = "一".ToSKTypeface(),
                     LabelOrientation = Orientation.Horizontal,
                     ValueLabelOrientation = Orientation.Horizontal
                 },
                 Width = 300,
-                Height = 500
+                Height = 550
             });
 
         }
