@@ -48,7 +48,7 @@ namespace HealthHelperMobileApp.ViewModels
                 Name = "運動類型熱量消耗",
                 Chart = new DonutChart
                 {
-                    Entries = alEntries,
+                    Entries = wcEntries,
                     LabelTextSize = 50,
                     Typeface = "一".ToSKTypeface()
                 },
@@ -61,12 +61,12 @@ namespace HealthHelperMobileApp.ViewModels
                 Name = "每週熱量消耗",
                 Chart = new RadialGaugeChart
                 {
-                    Entries = alEntries,
+                    Entries = weekCalEntries,
                     LabelTextSize = 50,
                     Typeface = "一".ToSKTypeface()
                 },
                 Width = 500,
-                Height = 300
+                Height = 220
             });
 
             chartLists.Add(new CChartList
@@ -74,17 +74,17 @@ namespace HealthHelperMobileApp.ViewModels
                 Name = "每週運動時數",
                 Chart = new LineChart
                 {
-                    Entries = alEntries,
+                    Entries = weekHourEntries,
                     LabelTextSize = 50,
-                    Typeface = "一".ToSKTypeface()
+                    Typeface = "一".ToSKTypeface(),
+                    LabelOrientation = Orientation.Horizontal,
+                    ValueLabelOrientation = Orientation.Horizontal
                 },
                 Width = 300,
                 Height = 500
             });
 
         }
-
-        public int Position { get; set; } = 0;
 
         public string MemberName
         {
@@ -115,7 +115,7 @@ namespace HealthHelperMobileApp.ViewModels
                         {
                             Color = SKColor.Parse(ColorList[colorIndex++].ToHex()),
                             Label = g.FirstOrDefault().ActivityLevel.Description.Substring(0, 2),
-                            ValueLabel = ((float)g.Sum(wl => wl.WorkoutTotalCal)).ToString(),
+                            ValueLabel = ((float)g.Sum(wl => wl.WorkoutTotalCal)).ToString() + " cal"
                         };
 
                 colorIndex = 0;
@@ -124,21 +124,66 @@ namespace HealthHelperMobileApp.ViewModels
             }
         }
 
-        //todo
-        //public List<ChartEntry> wcEntries
-        //{
-        //    //get
-        //    //{
-        //    //    var q = from wl in WorkoutLogs
-        //    //            group wl by wl.WorkoutCategory.ID into g
-        //    //            select new ChartEntry((float)g.Sum(wl => wl.WorkoutTotalCal))
-        //    //            {
-        //    //                Color = SKColor.Parse(GetColorByALID(g.Key)),
-        //    //                Label = g.FirstOrDefault().ActivityLevel.Description,
-        //    //                ValueLabel = ((float)g.Sum(wl => wl.WorkoutTotalCal)).ToString(),
-        //    //            };
-        //    //}
-        //}
+        
+        public List<ChartEntry> wcEntries
+        {
+            get
+            {
+                var q = from wl in WorkoutLogs
+                        group wl by wl.WorkoutCategory.ID into g
+                        select new ChartEntry((float)g.Sum(wl => wl.WorkoutTotalCal))
+                        {
+                            Color = SKColor.Parse(ColorList[colorIndex].ToHex()),
+                            Label = g.FirstOrDefault().WorkoutCategory.Name,
+                            ValueLabel = ((float)g.Sum(wl => wl.WorkoutTotalCal)).ToString() + " cal",
+                            ValueLabelColor = SKColor.Parse(ColorList[colorIndex++].ToHex())
+                        };
+
+                colorIndex = 0;
+
+                return q.ToList();
+            }
+        }
+
+        public List<ChartEntry> weekCalEntries
+        {
+            get
+            {
+                var q = from wl in WorkoutLogs
+                        group wl by wl.EditTime.Date into g
+                        select new ChartEntry((float)g.Sum(wl => wl.WorkoutTotalCal))
+                        {
+                            Color = SKColor.Parse(ColorList[colorIndex].ToHex()),
+                            Label = g.FirstOrDefault().EditTime.Date.ToString("M/d"),
+                            ValueLabel = ((float)g.Sum(wl => wl.WorkoutTotalCal)).ToString() + " cal",
+                            ValueLabelColor = SKColor.Parse(ColorList[colorIndex++].ToHex())
+                        };
+
+                colorIndex = 0;
+
+                return q.ToList();
+            }
+        }
+
+        public List<ChartEntry> weekHourEntries
+        {
+            get
+            {
+                var q = from wl in WorkoutLogs
+                        group wl by wl.EditTime.Date into g
+                        select new ChartEntry((float)g.Sum(wl => wl.WorkoutHours))
+                        {
+                            Color = SKColor.Parse(ColorList[colorIndex].ToHex()),
+                            Label = g.FirstOrDefault().EditTime.Date.ToString("M/d"),
+                            ValueLabel = ((float)g.Sum(wl => wl.WorkoutHours)).ToString() + " h",
+                            ValueLabelColor = SKColor.Parse(ColorList[colorIndex++].ToHex())
+                        };
+
+                colorIndex = 0;
+
+                return q.ToList();
+            }
+        }
 
         public List<CChartList> ChartLists
         {
@@ -156,20 +201,6 @@ namespace HealthHelperMobileApp.ViewModels
             }
         }
 
-        public string GetColorByALID(int alID)
-        {
-            switch (alID)
-            {
-                case 1:
-                    return Color.Pink.ToHex();
-                case 2:
-                    return Color.Yellow.ToHex();
-                case 3:
-                    return Color.DeepSkyBlue.ToHex();
-                default:
-                    return Color.SeaGreen.ToHex();
-            }
-        }
     }
 
     class CChartList
