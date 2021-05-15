@@ -8,17 +8,40 @@
         <viewmodels:CWLViewModel></viewmodels:CWLViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout x:Name="rootStack" BackgroundColor="White">
             <Label Text="檢視運動報表" 
                    HorizontalTextAlignment="Center" 
                    TextColor="White"
                    FontSize="30"
                    BackgroundColor="MidnightBlue"
                    Padding="10"/>
-            <CarouselView x:Name="crslView">
+            <CarouselView x:Name="crslView" ItemsSource="{Binding ChartLists}"
+                          IndicatorView="indicatorView">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate x:Name="dt">
+                        <StackLayout>
+                            <Label Text="{Binding Name}"
+                                   HorizontalOptions="FillAndExpand"
+                                   BackgroundColor="SeaGreen"
+                                   TextColor="White"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="30"></Label>
+                            <forms:ChartView x:Name="cv"
+                                             VerticalOptions="CenterAndExpand"
+                                             Chart="{Binding Chart}"
+                                             HeightRequest="{Binding Height}"
+                                             WidthRequest="{Binding Width}">
+                            </forms:ChartView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
             </CarouselView>
-            <!--<forms:ChartView x:Name="chart1"
-                   VerticalOptions="FillAndExpand"></forms:ChartView>-->
+            <IndicatorView x:Name="indicatorView"
+                           IndicatorColor="LightGray"
+                           SelectedIndicatorColor="DeepSkyBlue"
+                           HorizontalOptions="Center"
+                           HeightRequest="60">
+            </IndicatorView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

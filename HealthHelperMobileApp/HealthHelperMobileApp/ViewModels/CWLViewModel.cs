@@ -12,6 +12,79 @@ namespace HealthHelperMobileApp.ViewModels
     class CWLViewModel
     {
         List<CWorkoutLog> workoutLogs;
+        HashSet<Color> colorSet = new HashSet<Color>();
+        List<CChartList> chartLists = new List<CChartList>();
+        int colorIndex = 0;
+
+        public CWLViewModel() 
+        {
+            colorSet.Clear();
+            colorSet.Add(Color.Pink);
+            colorSet.Add(Color.Gold);
+            colorSet.Add(Color.DeepSkyBlue);
+            colorSet.Add(Color.SeaGreen);
+            colorSet.Add(Color.IndianRed);
+            colorSet.Add(Color.Goldenrod);
+            colorSet.Add(Color.LightSkyBlue);
+            colorSet.Add(Color.ForestGreen);
+            colorSet.Add(Color.OrangeRed);
+            colorSet.Add(Color.Khaki);
+
+            chartLists.Clear();
+            chartLists.Add(new CChartList { 
+                Name = "運動強度熱量消耗", 
+                Chart = new RadarChart 
+                { 
+                    Entries = alEntries,
+                    LabelTextSize = 50,
+                    Typeface = "一".ToSKTypeface()
+                },
+                Width = 500,
+                Height = 300
+            });
+
+            chartLists.Add(new CChartList
+            {
+                Name = "運動類型熱量消耗",
+                Chart = new DonutChart
+                {
+                    Entries = alEntries,
+                    LabelTextSize = 50,
+                    Typeface = "一".ToSKTypeface()
+                },
+                Width = 500,
+                Height = 300
+            });
+
+            chartLists.Add(new CChartList
+            {
+                Name = "每週熱量消耗",
+                Chart = new RadialGaugeChart
+                {
+                    Entries = alEntries,
+                    LabelTextSize = 50,
+                    Typeface = "一".ToSKTypeface()
+                },
+                Width = 500,
+                Height = 300
+            });
+
+            chartLists.Add(new CChartList
+            {
+                Name = "每週運動時數",
+                Chart = new LineChart
+                {
+                    Entries = alEntries,
+                    LabelTextSize = 50,
+                    Typeface = "一".ToSKTypeface()
+                },
+                Width = 300,
+                Height = 500
+            });
+
+        }
+
+        public int Position { get; set; } = 0;
 
         public string MemberName
         {
@@ -40,10 +113,12 @@ namespace HealthHelperMobileApp.ViewModels
                         group wl by wl.ActivityLevel.ID into g
                         select new ChartEntry((float)g.Sum(wl => wl.WorkoutTotalCal))
                         {
-                            Color = SKColor.Parse(GetColorByALID(g.Key)),
-                            Label = g.FirstOrDefault().ActivityLevel.Description,
+                            Color = SKColor.Parse(ColorList[colorIndex++].ToHex()),
+                            Label = g.FirstOrDefault().ActivityLevel.Description.Substring(0, 2),
                             ValueLabel = ((float)g.Sum(wl => wl.WorkoutTotalCal)).ToString(),
                         };
+
+                colorIndex = 0;
 
                 return q.ToList();
             }
@@ -69,15 +144,15 @@ namespace HealthHelperMobileApp.ViewModels
         {
             get
             {
-                List<CChartList> chartLists = new List<CChartList>();
-
-                chartLists.Add(new CChartList { Name = "Bar", entryList = alEntries });
-                chartLists.Add(new CChartList { Name = "Bar", entryList = alEntries });
-                chartLists.Add(new CChartList { Name = "Bar", entryList = alEntries });
-                chartLists.Add(new CChartList { Name = "Bar", entryList = alEntries });
-                chartLists.Add(new CChartList { Name = "Bar", entryList = alEntries });
-
                 return chartLists;
+            }
+        }
+
+        public List<Color> ColorList
+        {
+            get
+            {
+                return colorSet.ToList();
             }
         }
 
@@ -100,6 +175,11 @@ namespace HealthHelperMobileApp.ViewModels
     class CChartList
     {
         public string Name { get; set; }
-        public List<ChartEntry> entryList { get; set; }
+        
+        public Chart Chart { get; set; }
+
+        public int Width { get; set; }
+
+        public int Height { get; set; }
     }
 }
