@@ -10,8 +10,29 @@
                    FontSize="30"
                    BackgroundColor="DarkGreen"
                    Padding="10"/>
+            <ScrollView>
+            <StackLayout>
             <Label x:Name="lblHeader" Text="" BackgroundColor="LightGray" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" Padding="10"/>
-            <CollectionView x:Name="cvComment" 
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="搜尋:"
+                       TextColor="Black"
+                       FontSize="25"
+                       Padding="10"
+                       HorizontalOptions="Start"/>
+                        <Entry x:Name="keyword"
+                       TextChanged="Keyword_TextChanged"
+                       FontSize="30"
+                       HorizontalOptions="FillAndExpand"/>
+                        <Button Text="排序"
+                       TextColor="Black"
+                       FontSize="30"
+                       BackgroundColor="LightGray"
+                       HorizontalOptions="End"
+                                Clicked="BtnSort_Clicked"
+                       WidthRequest="100"/>
+                    </StackLayout>
+
+                    <CollectionView x:Name="cvComment" 
                             ItemsSource="{Binding CComment}" 
                             SelectionMode="Single"
                             SelectedItem="{Binding CComment}"
@@ -44,6 +65,8 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
