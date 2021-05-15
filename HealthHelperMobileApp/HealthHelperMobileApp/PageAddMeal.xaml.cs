@@ -18,11 +18,12 @@ namespace HealthHelperMobileApp
             InitializeComponent();
         }
 
-        private void btnAdd_Clicked(object sender, EventArgs e)
+        private void BtnAdd_Clicked(object sender, EventArgs e)
         {
             CMeal meal = new CMeal();
+            CNutrient nutrient = new CNutrient();
             if (string.IsNullOrEmpty(txtName.Text) ||
-               string.IsNullOrEmpty(txtImage.Text) ||
+               string.IsNullOrEmpty(txtCalories.Text) ||
                string.IsNullOrEmpty(txtPortion.Text))
             {
                 DisplayAlert("錯誤", "請填入所有欄位", "返回");
@@ -38,6 +39,13 @@ namespace HealthHelperMobileApp
                 meal.Portion = txtPortion.Text;
                 meal.Image = txtImage.Text;
                 new CMealFactory().Add(meal);
+                nutrient.Carbs = string.IsNullOrEmpty(txtCarbs.Text) ? "0" : txtCarbs.Text;
+                nutrient.Fat = string.IsNullOrEmpty(txtFat.Text) ? "0" : txtFat.Text;
+                nutrient.Choles = string.IsNullOrEmpty(txtCholes.Text) ? "0" : txtCholes.Text;
+                nutrient.Protein = string.IsNullOrEmpty(txtProtein.Text) ? "0" : txtProtein.Text;
+                nutrient.Sodium = string.IsNullOrEmpty(txtSodium.Text) ? "0" : txtSodium.Text;
+                nutrient.MealID = meal.ID;
+                new CNutrientFactory().Add(nutrient);
                 DisplayAlert("訊息", "已更新成功", "確認");
                 Navigation.PopAsync();
             }

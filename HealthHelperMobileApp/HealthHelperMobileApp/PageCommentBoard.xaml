@@ -1,23 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HealthHelperMobileApp.PageComment">
+             x:Class="HealthHelperMobileApp.PageCommentBoard">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="HealthHelper 評論" 
+            <Label Text="HealthHelper 留言板" 
                    HorizontalTextAlignment="Center" 
                    TextColor="White"
                    FontSize="30"
                    BackgroundColor="DarkGreen"
                    Padding="10"/>
-            <Button Text="新增" BackgroundColor="MediumAquamarine"
-                    TextColor="Black" FontSize="30"
-                    Clicked="BtnAdd_Clicked"/>
             <Label x:Name="lblHeader" Text="" BackgroundColor="LightGray" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" Padding="10"/>
             <CollectionView x:Name="cvComment" 
-                            ItemsSource="{Binding CComment}"
-                            SelectedItem="{Binding CComment}"
+                            ItemsSource="{Binding CComment}" 
                             SelectionMode="Single"
+                            SelectedItem="{Binding CComment}"
                             SelectionChanged="CvComment_SelectionChanged">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -32,14 +29,17 @@
                                     <Label Text="{Binding AddDateString}" TextColor="Black" FontSize="20" />
                                 </StackLayout>
                             </StackLayout>
-                            
+
                             <StackLayout Padding="8">
                                 <Label Text="標題" TextColor="Black" FontSize="20"/>
                                 <Label Text="{Binding Title}" TextColor="red" FontSize="20" />
+                                <Label Text="評論的餐點" TextColor="black" FontSize="20"/>
+                                <Label Text="{Binding MealName}" TextColor="Black" FontSize="20" />
                                 <Label Text="內容" TextColor="Black" FontSize="20"/>
                                 <Label Text="{Binding Content}" TextColor="blue" FontSize="20"/>
+                               
                             </StackLayout>
-                            
+
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

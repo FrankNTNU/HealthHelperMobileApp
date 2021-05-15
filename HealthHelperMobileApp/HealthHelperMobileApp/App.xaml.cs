@@ -23,6 +23,7 @@ namespace HealthHelperMobileApp
                 db.CreateTableAsync<CDietLog>().Wait();
                 db.CreateTableAsync<CDietDetail>().Wait();
                 db.CreateTableAsync<CComment>().Wait();
+                db.CreateTableAsync<CNutrient>().Wait();
             }
             
             return db;
@@ -30,9 +31,8 @@ namespace HealthHelperMobileApp
         public App()
         {
             InitializeComponent();
-            //App.GetConnection().DeleteAllAsync<CDietLog>();
-            //App.GetConnection().DeleteAllAsync<CDietDetail>();
             MainPage = new NavigationPage(new MainPage());
+            //App.GetConnection().DeleteAllAsync<CNutrient>();
         }
 
         protected override void OnStart()

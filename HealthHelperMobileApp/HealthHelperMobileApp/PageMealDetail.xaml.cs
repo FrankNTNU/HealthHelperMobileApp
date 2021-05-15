@@ -10,6 +10,7 @@ namespace HealthHelperMobileApp
     public partial class PageMealDetail : ContentPage
     {
         readonly private CMeal _meal;
+        private CNutrient nutrient;
         public PageMealDetail(CMeal meal)
         {
             InitializeComponent();
@@ -18,12 +19,20 @@ namespace HealthHelperMobileApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            lblID.Text = _meal.ID.ToString();
             lblName.Text = _meal.Name;
             lblCalories.Text = _meal.Calories.ToString();
             lblPortion.Text = _meal.Portion;
             imageArea.Source = _meal.Image;
             txtImage.Text = _meal.Image;
+            nutrient = new CNutrientFactory().GetNutrient(_meal.ID);
+            if (nutrient != null)
+            {
+                txtCarbs.Text = nutrient.Carbs;
+                txtCholes.Text = nutrient.Choles;
+                txtFat.Text = nutrient.Fat;
+                txtProtein.Text = nutrient.Protein;
+                txtSodium.Text = nutrient.Sodium;
+            }
             btnLike.BackgroundColor = _meal.IsFav ? Color.LightPink : Color.LightGray;
         }
 
@@ -33,11 +42,11 @@ namespace HealthHelperMobileApp
                string.IsNullOrEmpty(lblCalories.Text) ||
                string.IsNullOrEmpty(lblPortion.Text))
             {
-                DisplayAlert("錯誤", "請填入所有欄位", "返回");
+                DisplayAlert ("錯誤", "請填入所有欄位", "返回");
             }
             else if (!double.TryParse(lblCalories.Text, out double calories))
             {
-                DisplayAlert("錯誤", "請輸入正確的卡路里格式", "返回");
+                DisplayAlert ("錯誤", "請輸入正確的卡路里格式", "返回");
             }
             else
             {
@@ -45,8 +54,26 @@ namespace HealthHelperMobileApp
                 _meal.Calories = calories;
                 _meal.Portion = lblPortion.Text;
                 _meal.Image = txtImage.Text;
+                if (nutrient == null)
+                {
+                    nutrient = new CNutrient();
+                }
+                nutrient.Carbs = string.IsNullOrEmpty(txtCarbs.Text) ? "0" : txtCarbs.Text;
+                nutrient.Fat = string.IsNullOrEmpty(txtFat.Text) ? "0" : txtFat.Text;
+                nutrient.Choles = string.IsNullOrEmpty(txtCholes.Text) ? "0" : txtCholes.Text;
+                nutrient.Protein = string.IsNullOrEmpty(txtProtein.Text) ? "0" : txtProtein.Text;
+                nutrient.Sodium = string.IsNullOrEmpty(txtSodium.Text) ? "0" : txtSodium.Text;
+                nutrient.MealID = _meal.ID;
+                if (nutrient.ID == 0) // Not exist
+                {
+                    new CNutrientFactory().Add(nutrient);
+                }
+                else
+                {
+                    new CNutrientFactory().Update(nutrient);
+                }
                 new CMealFactory().Update(_meal);
-                DisplayAlert("訊息", "已更新成功", "確認");
+                DisplayAlert ("訊息", "已更新成功", "確認");
                 Navigation.PopAsync();
             }
         }
@@ -69,6 +96,18 @@ namespace HealthHelperMobileApp
         private void BtnComment_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new PageComment(_meal));
+        }
+
+        private void BtnDelete_Clicked(object sender, EventArgs e)
+        {
+            new CMealFactory().Delete(_meal);
+            CNutrient nutrient = new CNutrientFactory().GetNutrient(_meal.ID);
+            if (nutrient!= null)
+            {
+                new CNutrientFactory().Delete(nutrient);
+            }
+            DisplayAlert("訊息", "已刪除餐點", "返回");
+            Navigation.PopAsync();
         }
     }
 }
