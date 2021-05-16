@@ -1,15 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HealthHelperMobileApp"
              x:Class="HealthHelperMobileApp.PageMeal">
+    
     <ContentPage.Content>
+        
         <ScrollView>
             <StackLayout>
                 <Label Text="HealthHelper 餐點" 
                    HorizontalTextAlignment="Center" 
                    TextColor="White"
                    FontSize="30"
-                   BackgroundColor="MidnightBlue"
+                   BackgroundColor="DarkGreen"
                    Padding="10"/>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="搜尋:"
@@ -18,25 +21,58 @@
                        Padding="10"
                        HorizontalOptions="Start"/>
                     <Entry x:Name="keyword"
-                       TextChanged="keyword_TextChanged"
+                       TextChanged="Keyword_TextChanged"
                        FontSize="30"
                        HorizontalOptions="FillAndExpand"/>
+                    <Button 
+                       TextColor="Black"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="End"
+                       Clicked="BtnSort_Clicked"
+                       WidthRequest="100"
+                                x:Name="btnSort"
+                            HeightRequest="10"/>
                 </StackLayout>
-                <Button Text="新增" TextColor="Black" FontSize="30" 
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="   新增   " TextColor="Black" FontSize="30" 
                         BackgroundColor="MediumAquamarine"
+                        HorizontalOptions="FillAndExpand"
                         Clicked="BtnAdd_Clicked"/>
-                <Button Text="排序"
+                    <Button Text="收藏清單"
                        TextColor="Black"
                        FontSize="30"
-                       Clicked="BtnSort_Clicked"/>
-                <CollectionView x:Name="cvMeals">
+                       HorizontalOptions="FillAndExpand"
+                       BackgroundColor="lightpink"
+                       Clicked="BtnLike_Clicked"/>
+                </StackLayout>
+                <CollectionView x:Name="cvMeals"
+                                SelectedItem="{Binding CMeal}"
+                                SelectionChangedCommand="{Binding MealChanged}"
+                                SelectionMode="Single"
+                                SelectionChangedCommandParameter=
+                                "{Binding SelectedItem}"
+                                SelectionChanged="CvMeals_SelectionChanged">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout Padding="10">
-                                <Label FontSize="30" Text="{Binding Name}" TextColor="Black"/>
-                                <Label FontSize="25" Text="{Binding TotalCalories}" TextColor="blue"/>
-                                <Image Source="{Binding Image}"/>
-                            </StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                    <Label x:Name="lblName" FontSize="30" Text="{Binding Name}" TextColor="Black"
+                                           Grid.Row="0"
+                                           Grid.Column="1"/>
+                                    <Label FontSize="25" Text="{Binding TotalCalories}" TextColor="blue"
+                                           Grid.Row="1"
+                                           Grid.Column="1"/>
+                                    <Image Source="heart.png" IsVisible="{Binding IsFav}" HorizontalOptions="Start"
+                                           Grid.RowSpan="1"
+                                           Grid.Column="0"/>
+                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

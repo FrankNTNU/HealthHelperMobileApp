@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthHelperMobileApp.PageCommentBoard">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="HealthHelper 留言板" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="30"
+                   BackgroundColor="DarkGreen"
+                   Padding="10"/>
+            <ScrollView>
+            <StackLayout>
+            <Label x:Name="lblHeader" Text="" BackgroundColor="LightGray" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" Padding="10"
+                   />
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="搜尋:"
+                       TextColor="Black"
+                       FontSize="25"
+                       Padding="10"
+                       HorizontalOptions="Start"/>
+                        <Entry x:Name="keyword"
+                       TextChanged="Keyword_TextChanged"
+                       FontSize="30"
+                       HorizontalOptions="FillAndExpand"/>
+                        <Button 
+                       TextColor="Black"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="End"
+                       Clicked="BtnSort_Clicked"
+                       WidthRequest="100"
+                                x:Name="btnSort"
+                            HeightRequest="10"/>
+                    </StackLayout>
+
+                    <CollectionView x:Name="cvComment" 
+                            ItemsSource="{Binding CComment}" 
+                            SelectionMode="Single"
+                            SelectedItem="{Binding CComment}"
+                            SelectionChanged="CvComment_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <StackLayout BackgroundColor="#c7ecff">
+                                <StackLayout Orientation="Horizontal" Padding="5">
+                                    <Label Text="評論者" TextColor="Black" FontSize="20" />
+                                    <Label Text="{Binding MemberName}" TextColor="Black" FontSize="20" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Padding="5">
+                                    <Label Text="日期" TextColor="Black" FontSize="20"/>
+                                    <Label Text="{Binding AddDateString}" TextColor="Black" FontSize="20" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout Padding="8">
+                                <Label Text="標題" TextColor="Black" FontSize="20"/>
+                                <Label Text="{Binding Title}" TextColor="red" FontSize="20" />
+                                <Label Text="評論的餐點" TextColor="black" FontSize="20"/>
+                                <Label Text="{Binding MealName}" TextColor="Black" FontSize="20" />
+                                <Label Text="內容" TextColor="Black" FontSize="20"/>
+                                <Label Text="{Binding Content}" TextColor="blue" FontSize="20"/>
+                               
+                            </StackLayout>
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

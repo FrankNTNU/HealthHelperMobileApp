@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthHelperMobileApp.PageAddDietLog">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="HealthHelper 加入飲食" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="30"
+                   BackgroundColor="DarkGreen"
+                   Padding="10"/>
+            <StackLayout Padding="10">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="餐點: "
+                       TextColor="Black"
+                       FontSize="25"/>
+                    <Label x:Name="lblName" Text="" TextColor="blue" FontSize="25"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="卡路里: "
+                           TextColor="Black"
+                           FontSize="25"/>
+                    <Label x:Name="lblCalories" Text="" TextColor="red" FontSize="25"/>
+                </StackLayout>
+                <Label Text="選擇日期"
+                   FontSize="30"
+                   TextColor="Black"/>
+                <Picker TextColor="Black"
+                    FontSize="30"
+                    x:Name="datePicker"/>
+                <Label Text="輸入份數"
+                       FontSize="30"
+                       TextColor="Black"/>
+                <Entry x:Name="txtPortion"
+                       Keyboard="Numeric" 
+                       FontSize="30"
+                       TextColor="Black"/>
+                <Button Text="確認"
+                        FontSize="30"
+                        TextColor="Black"
+                        BackgroundColor="MediumAquamarine"
+                        Clicked="BtnAdd_Clicked"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

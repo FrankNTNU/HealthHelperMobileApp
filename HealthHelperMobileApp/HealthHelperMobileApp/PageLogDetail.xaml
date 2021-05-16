@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthHelperMobileApp.PageLogDetail">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="HealthHelper 細節紀錄" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="30"
+                   BackgroundColor="DarkGreen"
+                   Padding="10"/>
+          
+            <StackLayout Orientation="Horizontal" Padding="10">
+                <Label Text="日期:" TextColor="Black" FontSize="30"/>
+                <Label x:Name="lblDate" Text="{Binding AddDate}" TextColor="Black" FontSize="30"/>
+            </StackLayout>
+            
+            <CollectionView x:Name="cvDetail" ItemsSource="{Binding CDietDetail}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout  Padding="10">
+                           
+                            <Label Text="餐點名稱:" TextColor="Black" FontSize="20"/>
+                            <Label x:Name="lblMealName" Text="{Binding MealName}" TextColor="Black" FontSize="30"/>
+                            <Label Text="卡路里:" TextColor="Black" FontSize="20"/>
+                            <Label x:Name="lblCalories" Text="{Binding TotalCalories}" TextColor="red" FontSize="30"/>
+                            <Label Text="份數:" TextColor="Black" FontSize="20"/>
+                            <Label Text="{Binding Portion}" TextColor="blue" FontSize="30"/>
+                           
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

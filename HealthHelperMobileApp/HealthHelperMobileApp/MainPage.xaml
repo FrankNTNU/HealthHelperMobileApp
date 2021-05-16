@@ -4,7 +4,7 @@
              x:Class="HealthHelperMobileApp.MainPage">
 
     <StackLayout Spacing="0">
-        <Frame BackgroundColor="MidnightBlue" Padding="24" CornerRadius="0">
+        <Frame BackgroundColor="DarkGreen" Padding="24" CornerRadius="0">
             <Label Text="HealthHelper" 
                    HorizontalTextAlignment="Center" 
                    TextColor="White"
@@ -29,8 +29,10 @@
                     TextColor="White"
                     Clicked="BtnSignup_Clicked"/>
         </StackLayout>
+
         <Button x:Name="btnInsert" Clicked="btnInsert_Click"
                 Text="新增Workout Data"></Button>
+
     </StackLayout>
    
 

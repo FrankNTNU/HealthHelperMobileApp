@@ -16,7 +16,7 @@ namespace HealthHelperMobileApp.Models
         }
         public CMember GetMember(string username, string password)
         {
-            return App.GetConnection().Table<CMember>().FirstOrDefaultAsync(x => x.Name == username && x.Password == password).Result;
+            return App.GetConnection().Table<CMember>().Where(x => x.Name == username && x.Password == password).FirstOrDefaultAsync().Result;
         }
         public void Update(CMember member)
         {
@@ -25,5 +25,6 @@ namespace HealthHelperMobileApp.Models
                 App.GetConnection().UpdateAsync(member);
             }
         }
+       
     }
 }

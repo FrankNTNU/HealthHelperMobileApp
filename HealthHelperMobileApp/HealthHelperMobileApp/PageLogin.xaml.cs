@@ -29,7 +29,7 @@ namespace HealthHelperMobileApp
             {
                 Message.Text = "";
                 DisplayAlert("訊息", "歡迎回來, " + member.Name + "!", "進入");
-                App.member = member;
+                App.SelectedMember = member;
                 Navigation.PushAsync(new PageMainMenu());
             }
         }
