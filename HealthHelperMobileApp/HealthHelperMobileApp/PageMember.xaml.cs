@@ -35,6 +35,7 @@ namespace HealthHelperMobileApp
                 App.SelectedMember.Email = txtEmail.Text;
                 new CMemberFactory().Update(App.SelectedMember);
                 DisplayAlert("訊息", "已修改資訊", "確認");
+                Navigation.PopAsync();
             }
         }
     }

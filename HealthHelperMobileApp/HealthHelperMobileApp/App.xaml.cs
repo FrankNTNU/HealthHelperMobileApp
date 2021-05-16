@@ -24,6 +24,7 @@ namespace HealthHelperMobileApp
                 db.CreateTableAsync<CDietDetail>().Wait();
                 db.CreateTableAsync<CComment>().Wait();
                 db.CreateTableAsync<CNutrient>().Wait();
+                db.CreateTableAsync<CCustomImage>().Wait();
             }
             
             return db;

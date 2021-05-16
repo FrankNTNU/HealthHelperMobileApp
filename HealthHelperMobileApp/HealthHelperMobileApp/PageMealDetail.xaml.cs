@@ -11,6 +11,7 @@ namespace HealthHelperMobileApp
     {
         readonly private CMeal _meal;
         private CNutrient nutrient;
+        private CCustomImage customImage;
         public PageMealDetail(CMeal meal)
         {
             InitializeComponent();
@@ -22,8 +23,15 @@ namespace HealthHelperMobileApp
             lblName.Text = _meal.Name;
             lblCalories.Text = _meal.Calories.ToString();
             lblPortion.Text = _meal.Portion;
-            imageArea.Source = _meal.Image;
             txtImage.Text = _meal.Image;
+            imageArea.Source = _meal.Image;
+            customImage = new CCustomImageFactory().GetCustomImage(_meal.ID, App.SelectedMember.ID);
+            if (customImage != null)
+            {
+                imageArea.Source = customImage.CustomImage;
+                txtImage.Text = customImage.CustomImage;
+            }
+
             nutrient = new CNutrientFactory().GetNutrient(_meal.ID);
             if (nutrient != null)
             {
@@ -53,7 +61,14 @@ namespace HealthHelperMobileApp
                 _meal.Name = lblName.Text;
                 _meal.Calories = calories;
                 _meal.Portion = lblPortion.Text;
-                _meal.Image = txtImage.Text;
+                if (txtImage.Text != _meal.Image)
+                {
+                    CCustomImage newCustomImage = new CCustomImage();
+                    newCustomImage.MemberID = App.SelectedMember.ID;
+                    newCustomImage.MealID = _meal.ID;
+                    newCustomImage.CustomImage = txtImage.Text;
+                    new CCustomImageFactory().Add(newCustomImage);
+                }
                 if (nutrient == null)
                 {
                     nutrient = new CNutrient();
