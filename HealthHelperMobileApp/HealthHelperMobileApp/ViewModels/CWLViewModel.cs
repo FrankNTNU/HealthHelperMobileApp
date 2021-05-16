@@ -115,7 +115,7 @@ namespace HealthHelperMobileApp.ViewModels
                         {
                             Color = SKColor.Parse(ColorList[colorIndex++].ToHex()),
                             Label = g.FirstOrDefault().ActivityLevel.Description.Substring(0, 2),
-                            ValueLabel = ((float)g.Sum(wl => wl.WorkoutTotalCal)).ToString() + " cal"
+                            ValueLabel = ((float)g.Sum(wl => wl.WorkoutTotalCal)).ToString("0.00") + " cal"
                         };
 
                 colorIndex = 0;
@@ -135,7 +135,7 @@ namespace HealthHelperMobileApp.ViewModels
                         {
                             Color = SKColor.Parse(ColorList[colorIndex].ToHex()),
                             Label = g.FirstOrDefault().WorkoutCategory.Name,
-                            ValueLabel = ((float)g.Sum(wl => wl.WorkoutTotalCal)).ToString() + " cal",
+                            ValueLabel = ((float)g.Sum(wl => wl.WorkoutTotalCal)).ToString("0.00") + " cal",
                             ValueLabelColor = SKColor.Parse(ColorList[colorIndex++].ToHex())
                         };
 
@@ -157,7 +157,7 @@ namespace HealthHelperMobileApp.ViewModels
                         {
                             Color = SKColor.Parse(ColorList[colorIndex].ToHex()),
                             Label = g.FirstOrDefault().EditTime.Date.ToString("M/d"),
-                            ValueLabel = ((float)g.Sum(wl => wl.WorkoutTotalCal)).ToString() + " cal",
+                            ValueLabel = ((float)g.Sum(wl => wl.WorkoutTotalCal)).ToString("0.00") + " cal",
                             ValueLabelColor = SKColor.Parse(ColorList[colorIndex++].ToHex())
                         };
 
@@ -179,7 +179,7 @@ namespace HealthHelperMobileApp.ViewModels
                         {
                             Color = SKColor.Parse(ColorList[colorIndex].ToHex()),
                             Label = g.FirstOrDefault().EditTime.Date.ToString("M/d"),
-                            ValueLabel = ((float)g.Sum(wl => wl.WorkoutHours)).ToString() + " h",
+                            ValueLabel = ((float)g.Sum(wl => wl.WorkoutHours)).ToString("0.00") + " h",
                             ValueLabelColor = SKColor.Parse(ColorList[colorIndex++].ToHex())
                         };
 
