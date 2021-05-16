@@ -59,7 +59,7 @@
                     <Entry x:Name="txtImage"
                        TextColor="black"
                        FontSize="25"
-                       Text="{Binding Image}"/>
+                       Text="{Binding ChosenImage}"/>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
