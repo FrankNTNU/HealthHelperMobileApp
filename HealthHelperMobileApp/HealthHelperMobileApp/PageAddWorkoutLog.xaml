@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HealthHelperMobileApp.PageAddWorkoutLog">
+             x:Class="HealthHelperMobileApp.PageAddWorkoutLog"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="新增運動紀錄" 
@@ -33,7 +34,7 @@
                    TextColor="Red"></Label>
             <DatePicker x:Name="dpEditTime"
                         MinimumDate="01/01/2021"
-                        MaximumDate="12/31/2021"></DatePicker>
+                        MaximumDate="{x:Static sys:DateTime.Now}"></DatePicker>
             <StackLayout VerticalOptions="EndAndExpand">
                 <Button x:Name="btnSubmit" FontSize="30" Text="送出" BackgroundColor="DodgerBlue" TextColor="White"
                         Clicked="btnSubmit_Click"

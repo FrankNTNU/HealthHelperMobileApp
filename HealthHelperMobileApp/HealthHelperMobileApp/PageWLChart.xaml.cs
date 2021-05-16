@@ -18,11 +18,23 @@ namespace HealthHelperMobileApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PageWLChart : ContentPage
     {
-        
+        CWLViewModel wlViewModel;
+
         public PageWLChart()
         {
             InitializeComponent();
+
+            wlViewModel = this.BindingContext as CWLViewModel;
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (wlViewModel.WorkoutLogs.Count == 0)
+            {
+                DisplayAlert("提示", "目前無資料", "OK");
+            }
+        }
     }
 }

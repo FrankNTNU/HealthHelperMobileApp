@@ -81,7 +81,7 @@ namespace HealthHelperMobileApp.ViewModels
                     ValueLabelOrientation = Orientation.Horizontal
                 },
                 Width = 300,
-                Height = 550
+                Height = 400
             });
 
         }
