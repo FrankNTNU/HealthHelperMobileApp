@@ -27,6 +27,7 @@ namespace HealthHelperMobileApp
             base.OnAppearing();
             cvMeals.ItemsSource = new CMealFactory().GetMeals();
             keyword.Text = "";
+            btnSort.ImageSource = isAscending ? "arrowUp.png" : "arrowDown.png";
         }
         private void BtnAdd_Clicked(object sender, EventArgs e)
         {
@@ -50,11 +51,15 @@ namespace HealthHelperMobileApp
             if (isLike)
             {
                 cvMeals.ItemsSource = new CMealFactory().GetLikedMeals(keyword.Text, isAscending);
+                btnSort.ImageSource = isAscending ? "arrowUp.png" : "arrowDown.png";
+
             }
             else
             {
                 cvMeals.ItemsSource = new CMealFactory().GetMeals(keyword.Text, isAscending);
-                
+                btnSort.ImageSource = isAscending ? "arrowUp.png" : "arrowDown.png";
+
+
             }
             isAscending = !isAscending;
         }

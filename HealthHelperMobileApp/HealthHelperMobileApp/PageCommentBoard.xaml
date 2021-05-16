@@ -12,7 +12,8 @@
                    Padding="10"/>
             <ScrollView>
             <StackLayout>
-            <Label x:Name="lblHeader" Text="" BackgroundColor="LightGray" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" Padding="10"/>
+            <Label x:Name="lblHeader" Text="" BackgroundColor="LightGray" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" Padding="10"
+                   />
                     <StackLayout Orientation="Horizontal">
                         <Label Text="搜尋:"
                        TextColor="Black"
@@ -23,13 +24,14 @@
                        TextChanged="Keyword_TextChanged"
                        FontSize="30"
                        HorizontalOptions="FillAndExpand"/>
-                        <Button Text="排序"
+                        <Button 
                        TextColor="Black"
-                       FontSize="30"
-                       BackgroundColor="LightGray"
+                       BackgroundColor="Transparent"
                        HorizontalOptions="End"
-                                Clicked="BtnSort_Clicked"
-                       WidthRequest="100"/>
+                       Clicked="BtnSort_Clicked"
+                       WidthRequest="100"
+                                x:Name="btnSort"
+                            HeightRequest="10"/>
                     </StackLayout>
 
                     <CollectionView x:Name="cvComment" 

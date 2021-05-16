@@ -17,12 +17,16 @@ namespace HealthHelperMobileApp
         {
             InitializeComponent();
         }
+        bool isAscending = false;
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
             var list = new CCommentFactory().GetAllComments();
             cvComment.ItemsSource = list.Where(x => x.BasedCommentID == 0);
             lblHeader.Text = "共有" + list.Where(x => x.BasedCommentID == 0).Count() + "則評論";
+            keyword.Text = "";
+            btnSort.ImageSource = isAscending ? "arrowUp.png" : "arrowDown.png";
         }
 
         private void CvComment_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -48,11 +52,11 @@ namespace HealthHelperMobileApp
 
             }
         }
-        bool isAscending = false;
         private async void BtnSort_Clicked(object sender, EventArgs e)
         {
             keyword.Text = "";
             isAscending = !isAscending;
+            btnSort.ImageSource = isAscending ? "arrowUp.png" : "arrowDown.png";
             var list = await new CCommentFactory().GetComments(isAscending);
             cvComment.ItemsSource = list.Where(x => x.BasedCommentID == 0);
             lblHeader.Text = "共有" + list.Where(x => x.BasedCommentID == 0).Count() + "則評論";

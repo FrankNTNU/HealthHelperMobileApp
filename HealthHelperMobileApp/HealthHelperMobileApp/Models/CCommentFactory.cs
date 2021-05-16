@@ -18,7 +18,7 @@ namespace HealthHelperMobileApp.Models
         }
         public List<CComment> GetComments(int mealID)
         {
-            return App.GetConnection().Table<CComment>().Where(x => x.MealID == mealID).ToListAsync().Result;
+            return App.GetConnection().Table<CComment>().Where(x => x.MealID == mealID).OrderByDescending(x=>x.AddDate).ToListAsync().Result;
         }
         public Task<List<CComment>> GetComments(string text)
         {
@@ -39,7 +39,7 @@ namespace HealthHelperMobileApp.Models
         }
         public List<CComment> GetReplies(int commentID)
         {
-            return App.GetConnection().Table<CComment>().Where(x => x.BasedCommentID == commentID).ToListAsync().Result;
+            return App.GetConnection().Table<CComment>().Where(x => x.BasedCommentID == commentID).OrderByDescending(x => x.AddDate).ToListAsync().Result;
         }
        
         public void Add(CComment comment)

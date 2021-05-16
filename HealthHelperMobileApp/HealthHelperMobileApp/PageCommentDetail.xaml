@@ -64,7 +64,7 @@
                         ImageSource="comment.png"
                         FontSize="25"
                         BackgroundColor="MediumAquamarine"
-                        Clicked="BtnReply_Clicked"/>
+                        Clicked="BtnReply_Clicked" Margin="20" Padding="10"/>
                 </StackLayout>
                 <CollectionView ItemsSource="{Binding CComment}" x:Name="cvReplySection"
                                 SelectedItem="{Binding CComment}"
