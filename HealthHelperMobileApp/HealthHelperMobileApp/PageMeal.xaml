@@ -24,13 +24,14 @@
                        TextChanged="Keyword_TextChanged"
                        FontSize="30"
                        HorizontalOptions="FillAndExpand"/>
-                    <Button Text="排序"
+                    <Button 
                        TextColor="Black"
-                       FontSize="30"
-                       BackgroundColor="LightGray"
+                       BackgroundColor="Transparent"
                        HorizontalOptions="End"
-                       Clicked="BtnSort_Clicked" 
-                       WidthRequest="100"/>
+                       Clicked="BtnSort_Clicked"
+                       WidthRequest="100"
+                                x:Name="btnSort"
+                            HeightRequest="10"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Button Text="   新增   " TextColor="Black" FontSize="30" 

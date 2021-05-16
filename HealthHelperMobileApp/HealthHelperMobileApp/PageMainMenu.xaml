@@ -15,7 +15,7 @@
                     <Button Text="會員   "
                             HeightRequest="100" FontSize="35"
                             Clicked="BtnMember_Clicked"
-                            ImageSource="person.png"/>
+                            ImageSource="member.jpg"/>
                     <Button Text="餐點   "
                             HeightRequest="100" FontSize="35"
                             TextColor="Black" 
@@ -23,7 +23,7 @@
                             Clicked="BtnMeal_Clicked"/>
                     <Button Text="運動   "
                             HeightRequest="100" FontSize="35"
-                            ImageSource="workout1.png"/>
+                            ImageSource="workout.jpg"/>
                     <Button Text="紀錄   " 
                             HeightRequest="100" FontSize="35"
                             TextColor="Black" 
