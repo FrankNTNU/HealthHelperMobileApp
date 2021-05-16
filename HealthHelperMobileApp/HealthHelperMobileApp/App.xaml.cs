@@ -18,6 +18,14 @@ namespace HealthHelperMobileApp
             if (db == null)
             {
                 db = new SQLiteAsyncConnection(path);
+
+            //恩旗
+            db.CreateTableAsync<CActivityLevel>();
+            db.CreateTableAsync<CWorkoutCategory>();
+            db.CreateTableAsync<CWorkout>();
+            db.CreateTableAsync<CWorkoutLog>();
+
+
                 db.CreateTableAsync<CMember>().Wait();
                 db.CreateTableAsync<CMeal>().Wait();
                 db.CreateTableAsync<CDietLog>().Wait();
@@ -27,12 +35,14 @@ namespace HealthHelperMobileApp
                 db.CreateTableAsync<CCustomImage>().Wait();
             }
             
+
             return db;
         }
         public App()
         {
             InitializeComponent();
             MainPage = new NavigationPage(new MainPage());
+
         }
 
         protected override void OnStart()

@@ -17,26 +17,29 @@ namespace HealthHelperMobileApp
 
             
         }
+
         private void BtnLogin_Clicked(object sender, EventArgs e)
         {
             this.Navigation.PushAsync(new PageLogin());
         }
+
         private void BtnSignup_Clicked(object sender, EventArgs e)
         {
             this.Navigation.PushAsync(new PageSignUp());
         }
 
+        //恩旗
         private void btnInsert_Click(object sender, EventArgs e)
         {
 
             CALFactory alFactory = new CALFactory();
             alFactory.insert();
 
-            //CWCFatory wcFatory = new CWCFatory();
-            //wcFatory.insert();
+            CWCFatory wcFatory = new CWCFatory();
+            wcFatory.insert();
 
-            //CWFactory wFactory = new CWFactory();
-            //wFactory.insert();
+            CWFactory wFactory = new CWFactory();
+            wFactory.insert();
         }
     }
 }

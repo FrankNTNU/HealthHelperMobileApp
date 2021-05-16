@@ -9,29 +9,11 @@ namespace HealthHelperMobileApp.Models
 {
     class CWFactory
     {
-        SQLiteAsyncConnection conn;
-
-        internal CWFactory()
-        {
-            getConn();
-        }
-
-        public SQLiteAsyncConnection getConn()
-        {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            path = Path.Combine(path, "HH.db");
-            if (conn == null)
-            {
-                conn = new SQLiteAsyncConnection(path);
-                conn.CreateTableAsync<CWorkout>();
-            }
-            return conn;
-        }
         internal void insert()
         {
             
             List<CWorkout> list;
-            if ((list = getConn().Table<CWorkout>().ToListAsync().Result).Count > 0)
+            if ((list = App.GetConnection().Table<CWorkout>().ToListAsync().Result).Count > 0)
             {
                 return;
             }
@@ -75,13 +57,13 @@ namespace HealthHelperMobileApp.Models
 
             foreach (var item in wlList)
             {
-                conn.InsertAsync(item);
+                App.GetConnection().InsertAsync(item);
             }
         }
 
         internal List<CWorkout> GetWorkoutsByWCAL(int wcID = -1, int alID = -1)
         {
-            return conn.Table<CWorkout>()
+            return App.GetConnection().Table<CWorkout>()
                 .Where(w => (wcID == -1 || w.WorkoutCategoryID == wcID) && (alID == -1 || w.ActivityLevelID == alID))
                 .ToListAsync().Result;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthHelperMobileApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,21 @@ namespace HealthHelperMobileApp
         public PageWorkoutLogList()
         {
             InitializeComponent();
+        }
+
+        private void btnAddWL_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new PageAddWorkoutLog());
+        }
+
+        protected override void OnAppearing()
+        {
+            this.BindingContext = new CWLViewModel();
+        }
+
+        private void btnWLChart_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new PageWLChart());
         }
     }
 }

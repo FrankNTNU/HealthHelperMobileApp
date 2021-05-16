@@ -1,42 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HealthHelperMobileApp.PageWorkoutLog">
+             x:Class="HealthHelperMobileApp.PageAddWorkoutLog"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="歡迎來到運動中心" FontSize="30"
-                VerticalOptions="Start" 
-                HorizontalOptions="FillAndExpand" />
+            <Label Text="新增運動紀錄" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="30"
+                   BackgroundColor="MidnightBlue"
+                   Padding="10"/>
             <Picker x:Name="pkrAL" FontSize="30"
-                ItemDisplayBinding="{Binding Description}"
-                SelectedIndexChanged="pkrWCAL_SelectedIndexChanged"
-                VerticalOptions="Start" 
-                HorizontalOptions="FillAndExpand"></Picker>
+                    ItemDisplayBinding="{Binding Description}"
+                    SelectedIndexChanged="pkrWCAL_SelectedIndexChanged"
+                    VerticalOptions="Start" 
+                    HorizontalOptions="FillAndExpand"></Picker>
             <Picker x:Name="pkrWC" FontSize="30"
                 ItemDisplayBinding="{Binding Name}"
                 SelectedIndexChanged="pkrWCAL_SelectedIndexChanged"
                 VerticalOptions="Start"  
                 HorizontalOptions="FillAndExpand"></Picker>
-            <Picker x:Name="pkrWorkout" FontSize="30"
-                ItemDisplayBinding="{Binding Name}"
-                VerticalOptions="Start"  
-                HorizontalOptions="FillAndExpand"></Picker>
+            <Picker x:Name="pkrWorkout" FontSize="30" Title="運動項目"
+                    ItemDisplayBinding="{Binding Name}"
+                    VerticalOptions="Start"  
+                    HorizontalOptions="FillAndExpand"></Picker>
             <Label x:Name="lblWTest"
                    TextColor="Red"></Label>
-            <Entry x:Name="txtHours" FontSize="30"
-                VerticalOptions="Start"  
-                HorizontalOptions="FillAndExpand"></Entry>
+            <Entry x:Name="txtHours" FontSize="30" Placeholder="運動了多久(小時)"
+                   VerticalOptions="Start"  
+                   HorizontalOptions="FillAndExpand"></Entry>
             <Label x:Name="lblHoursTest"
                    TextColor="Red"></Label>
-            <StackLayout Orientation="Horizontal">
-                <Button x:Name="btnSubmit" FontSize="30" Text="送出"
-                    Clicked="btnSubmit_Click"
-                    VerticalOptions="Start"  
-                    HorizontalOptions="CenterAndExpand"></Button>
-                <Button x:Name="btnBrowse" FontSize="30" Text="瀏覽"
-                    Clicked="btnBrows_Click"
-                    VerticalOptions="Start"  
-                    HorizontalOptions="CenterAndExpand"></Button>
+            <DatePicker x:Name="dpEditTime"
+                        MinimumDate="01/01/2021"
+                        MaximumDate="{x:Static sys:DateTime.Now}"></DatePicker>
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Button x:Name="btnSubmit" FontSize="30" Text="送出" BackgroundColor="DodgerBlue" TextColor="White"
+                        Clicked="btnSubmit_Click"
+                        VerticalOptions="End"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

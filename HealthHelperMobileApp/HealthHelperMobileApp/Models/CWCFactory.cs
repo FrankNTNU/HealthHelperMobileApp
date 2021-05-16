@@ -9,28 +9,10 @@ namespace HealthHelperMobileApp.Models
 {
     class CWCFatory {
 
-        SQLiteAsyncConnection conn;
-
-        public CWCFatory()
-        {
-            getConn();
-        }
-
-        public SQLiteAsyncConnection getConn()
-        {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            path = Path.Combine(path, "HH.db");
-            if (conn == null)
-            {
-                conn = new SQLiteAsyncConnection(path);
-                conn.CreateTableAsync<CWorkoutCategory>();
-            }
-            return conn;
-        }
         internal void insert()
         {
             List<CWorkoutCategory> list;
-            if ((list = getConn().Table<CWorkoutCategory>().ToListAsync().Result).Count > 0)
+            if ((list = App.GetConnection().Table<CWorkoutCategory>().ToListAsync().Result).Count > 0)
             {
                 return;
             }
@@ -52,7 +34,7 @@ namespace HealthHelperMobileApp.Models
 
             foreach (var item in wcList)
             {
-                conn.InsertAsync(item);
+                App.GetConnection().InsertAsync(item);
             }
         }
     }

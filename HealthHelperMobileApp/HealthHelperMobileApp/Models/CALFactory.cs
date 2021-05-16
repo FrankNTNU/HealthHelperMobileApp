@@ -9,28 +9,11 @@ namespace HealthHelperMobileApp.Models
 {
     class CALFactory
     {
-        SQLiteAsyncConnection conn;
 
-        internal CALFactory()
-        {
-            getConn();
-        }
-
-        public SQLiteAsyncConnection getConn()
-        {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            path = Path.Combine(path, "HH.db");
-            if (conn == null)
-            {
-                conn = new SQLiteAsyncConnection(path);
-                conn.CreateTableAsync<CActivityLevel>();
-            }
-            return conn;
-        }
         internal void insert()
         {
             List<CActivityLevel> list;
-            if ((list = getConn().Table<CActivityLevel>().ToListAsync().Result).Count > 0)
+            if ((list = App.GetConnection().Table<CActivityLevel>().ToListAsync().Result).Count > 0)
             {
                 return;
             }
@@ -44,7 +27,7 @@ namespace HealthHelperMobileApp.Models
 
             foreach (var item in alList)
             {
-                conn.InsertAsync(item);
+                App.GetConnection().InsertAsync(item);
             }
         }
     }

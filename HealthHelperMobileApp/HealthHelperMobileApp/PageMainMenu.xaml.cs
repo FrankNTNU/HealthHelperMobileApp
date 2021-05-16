@@ -28,6 +28,11 @@ namespace HealthHelperMobileApp
             Navigation.PushAsync(new PageMeal());
         }
 
+
+        private void btnWorkout_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new PageWorkoutLogList());
+
         private void BtnLog_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new PageLog());
@@ -37,6 +42,7 @@ namespace HealthHelperMobileApp
         private void BtnComment_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new PageCommentBoard());
+
         }
     }
 }

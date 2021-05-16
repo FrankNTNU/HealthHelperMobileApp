@@ -13,37 +13,22 @@ using Xamarin.Forms.Xaml;
 namespace HealthHelperMobileApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PageWorkoutLog : ContentPage
+    public partial class PageAddWorkoutLog : ContentPage
     {
-        SQLiteAsyncConnection conn;
         CWFactory wFactory = new CWFactory();
         CWLFactory wlFactory = new CWLFactory();
         int wcID, alID;
 
-        public SQLiteAsyncConnection getConn()
-        {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            path = Path.Combine(path, "HH.db");
-            if (conn == null)
-            {
-                conn = new SQLiteAsyncConnection(path);
-                //conn.CreateTableAsync<CActivityLevel>();
-                //conn.DropTableAsync<CActivityLevel>();
-                //conn.DropTableAsync<CWorkoutCategory>();
-            }
-            return conn;
-        }
-
-        public PageWorkoutLog()
+        public PageAddWorkoutLog()
         {
             InitializeComponent();
 
-            List<CWorkoutCategory> wcList = getConn().Table<CWorkoutCategory>().ToListAsync().Result;
+            List<CWorkoutCategory> wcList = App.GetConnection().Table<CWorkoutCategory>().ToListAsync().Result;
             wcList.Insert(0, new CWorkoutCategory { ID = -1, Name = "全部類型" });
             this.pkrWC.ItemsSource = wcList;
             this.pkrWC.SelectedIndex = 0;
 
-            List<CActivityLevel> alList = getConn().Table<CActivityLevel>().ToListAsync().Result;
+            List<CActivityLevel> alList = App.GetConnection().Table<CActivityLevel>().ToListAsync().Result;
             alList.Insert(0, new CActivityLevel { ID = -1, Description = "全部強度"});
             this.pkrAL.ItemsSource = alList;
             this.pkrAL.SelectedIndex = 0;
@@ -61,11 +46,6 @@ namespace HealthHelperMobileApp
 
             List<CWorkout> wList = wFactory.GetWorkoutsByWCAL((wcID = wc.ID), (alID = al.ID));
             this.pkrWorkout.ItemsSource = wList;
-        }
-
-        private void btnBrows_Click(object sender, EventArgs e)
-        {
-
         }
 
         private async void btnSubmit_Click(object sender, EventArgs e)
@@ -90,10 +70,10 @@ namespace HealthHelperMobileApp
             }
 
             CWorkoutLog wl = new CWorkoutLog();
-            wl.MemberID = 1;
+            wl.MemberID = App.member.ID;
             wl.WorkoutID = workout.ID;
             wl.WorkoutHours = hours;
-            wl.EditTime = DateTime.Now;
+            wl.EditTime = this.dpEditTime.Date;
 
             if (wlFactory.AddWorkoutLog(wl))
             {
@@ -105,5 +85,6 @@ namespace HealthHelperMobileApp
             }
             
         }
+
     }
 }
