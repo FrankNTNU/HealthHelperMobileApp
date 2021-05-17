@@ -21,7 +21,33 @@ namespace HealthHelperMobileApp.Models
             {
                 return false;
             }
-            
+
+        }
+
+        internal bool EditWorkoutLog(CWorkoutLog workoutLog)
+        {
+            try
+            {
+                App.GetConnection().UpdateAsync(workoutLog);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        internal bool DeleteWorkoutLog(CWorkoutLog workoutLog)
+        {
+            try
+            {
+                App.GetConnection().DeleteAsync(workoutLog);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

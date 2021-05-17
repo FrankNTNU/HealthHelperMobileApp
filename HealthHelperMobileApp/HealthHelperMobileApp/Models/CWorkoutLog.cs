@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HealthHelperMobileApp.Models
 {
-    class CWorkoutLog
+    public class CWorkoutLog
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }

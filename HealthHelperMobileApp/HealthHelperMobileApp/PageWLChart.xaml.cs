@@ -27,13 +27,13 @@ namespace HealthHelperMobileApp
             wlViewModel = this.BindingContext as CWLViewModel;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
             if (wlViewModel.WorkoutLogs.Count == 0)
             {
-                DisplayAlert("提示", "目前無資料", "OK");
+                await DisplayAlert ("提示", "目前無資料", "OK");
             }
         }
     }

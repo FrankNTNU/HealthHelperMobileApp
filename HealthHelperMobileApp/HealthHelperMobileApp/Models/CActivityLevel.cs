@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HealthHelperMobileApp.Models
 {
-    class CActivityLevel
+    public class CActivityLevel
     {
         [PrimaryKey]
         public int ID { get; set; }

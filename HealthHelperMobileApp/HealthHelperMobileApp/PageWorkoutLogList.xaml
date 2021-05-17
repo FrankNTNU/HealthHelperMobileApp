@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:viewmodels="clr-namespace:HealthHelperMobileApp.ViewModels"
-             x:Class="HealthHelperMobileApp.PageWorkoutLogList">
+             x:Class="HealthHelperMobileApp.PageWorkoutLogList"
+             x:Name="WorkoutLogList">
     <ContentPage.BindingContext>
         <viewmodels:CWLViewModel></viewmodels:CWLViewModel>
     </ContentPage.BindingContext>
@@ -17,8 +18,13 @@
             <CollectionView x:Name="cView" ItemsSource="{Binding WorkoutLogs, Mode=OneWay}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
-                            <Label Text="{Binding Workout.Name, Mode=OneWay}" FontSize="20" TextColor="Green"></Label>
+                        <StackLayout BackgroundColor="White">
+                            <Label Text="{Binding Workout.Name, Mode=OneWay}" FontSize="20" TextColor="Green">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference WorkoutLogList}, Path=BindingContext.MyCommand}"
+                                                          CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                            </Label>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding WorkoutHours, Mode=OneWay, StringFormat='做了{0:#.00}小時，'}" FontSize="20"></Label>
                                 <Label Text="{Binding WorkoutTotalCal, Mode=OneWay, StringFormat='消耗了{0:#.00}卡路里'}" FontSize="20"></Label>
