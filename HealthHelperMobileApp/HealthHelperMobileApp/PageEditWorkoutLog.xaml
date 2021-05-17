@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HealthHelperMobileApp.PageEditWorkoutLog"
              x:Name="EditWorkoutLog"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              BindingContext="{Binding Source={x:Reference EditWorkoutLog}, Path=WL}">
     <ContentPage.Content>
         <StackLayout>
@@ -37,6 +38,10 @@
             </StackLayout>
             <Label x:Name="lblHoursTest"
                    TextColor="Red"></Label>
+            <DatePicker x:Name="dpEditTime"
+                        MinimumDate="01/01/2021"
+                        MaximumDate="{x:Static sys:DateTime.Now}"
+                        Date="{Binding EditTime.Date}"></DatePicker>
             <StackLayout VerticalOptions="EndAndExpand">
                 <Button x:Name="btnEdit" FontSize="30" Text="修改" BackgroundColor="DodgerBlue" TextColor="White"
                         Clicked="btnEdit_Click"

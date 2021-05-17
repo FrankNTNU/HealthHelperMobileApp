@@ -94,7 +94,7 @@ namespace HealthHelperMobileApp
             wl.MemberID = App.member.ID;
             wl.WorkoutID = workout.ID;
             wl.WorkoutHours = hours;
-            wl.EditTime = DateTime.Now;
+            wl.EditTime = this.dpEditTime.Date;
             
             if (wlFactory.EditWorkoutLog(wl))
             {
