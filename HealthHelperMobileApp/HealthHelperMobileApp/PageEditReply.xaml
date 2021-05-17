@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthHelperMobileApp.PageEditReply">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="HealthHelper 編輯回覆" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="30"
+                   BackgroundColor="DarkGreen"
+                   Padding="10"/>
+            <StackLayout Orientation="Horizontal" Padding="5">
+                <Label Text="評論者" TextColor="Black" FontSize="20" />
+                <Label x:Name="lblMember" Text="{Binding MemberName}" TextColor="Black" FontSize="20" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="5">
+                <Label Text="日期" TextColor="Black" FontSize="20"/>
+                <Label x:Name="lblDate" Text="{Binding AddDate}" TextColor="Black" FontSize="20" />
+            </StackLayout>
+            <StackLayout Padding="5">
+                <Label Text="回覆內容" TextColor="Black" FontSize="20"/>
+                <Editor x:Name="txtReplyContent" Text="{Binding Content}" TextColor="Black" FontSize="30"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="修改"
+                        TextColor="Black"
+                        FontSize="25"
+                        BackgroundColor="LightSkyBlue"
+                        HorizontalOptions="FillAndExpand"
+                        ImageSource="pencil.png"
+                        Clicked="BtnUpdate_Clicked"/>
+                <Button Text="刪除"
+                        TextColor="Black"
+                        FontSize="25"
+                        BackgroundColor="#fc9a95"
+                        HorizontalOptions="FillAndExpand"
+                        ImageSource="cross.png"
+                        Clicked="BtnDelete_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

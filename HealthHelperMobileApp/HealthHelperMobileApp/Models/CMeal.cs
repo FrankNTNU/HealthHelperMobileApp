@@ -14,6 +14,7 @@ namespace HealthHelperMobileApp.Models
         public double Calories { get; set; }
         public string Portion { get; set; }
         public string TotalCalories => $"{Calories} 大卡";
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
+        public bool IsFav { get; set; }
     }
 }

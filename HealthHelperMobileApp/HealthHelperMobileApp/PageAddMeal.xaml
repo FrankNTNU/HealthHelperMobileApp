@@ -8,41 +8,94 @@
                    HorizontalTextAlignment="Center" 
                    TextColor="White"
                    FontSize="30"
-                   BackgroundColor="MidnightBlue"
+                   BackgroundColor="DarkGreen"
                    Padding="10"/>
             <ScrollView>
                 <StackLayout>
                     <Label Text="餐點名稱:"
                        TextColor="Black"
-                       FontSize="30"
-                       BackgroundColor="LightGray"
-                       Padding="10"/>
+                       FontSize="25"/>
                     <Entry x:Name="txtName"
-                       TextColor="Black"
-                       FontSize="30"/>
-                    
-                    <Label Text="卡路里:"
-                       TextColor="Black"
+                       TextColor="blue"
                        FontSize="30"
-                       BackgroundColor="LightGray" Padding="10"/>
-                    <Entry x:Name="txtCalories"
+                   Text="{Binding Name}"/>
+                    <Label Text="卡路里 (大卡):"
                        TextColor="Black"
-                       FontSize="30"/>
-                    
+                       FontSize="25"/>
+                    <Entry x:Name="txtCalories"
+                       TextColor="red"
+                       FontSize="30"
+                   Text="{Binding Calories}"/>
                     <Label Text="份量:"
                        TextColor="Black"
-                       FontSize="30"
-                       BackgroundColor="LightGray" Padding="10"/>
+                       FontSize="25"/>
                     <Entry x:Name="txtPortion"
+                       TextColor="black"
+                       FontSize="30"
+                   Text="{Binding Portion}"/>
+                    <Label Text="圖片檔:"
                        TextColor="Black"
-                       FontSize="30"/>
+                       FontSize="25"/>
+                    <Entry x:Name="txtImage"
+                       TextColor="black"
+                       FontSize="30"
+                   Text="{Binding Image}"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="碳水化合物:"
+                       TextColor="Black"
+                       FontSize="25" Grid.Row="0" Grid.Column="0"/>
+                        <Entry x:Name="txtCarbs"
+                       TextColor="black"
+                       FontSize="25"
+                       Text="{Binding Carbs}" Grid.Row="0" Grid.Column="1"/>
+                        <Label Text="蛋白質:"
+                       TextColor="Black"
+                       FontSize="25" Grid.Row="1" Grid.Column="0"/>
+                        <Entry x:Name="txtProtein"
+                       TextColor="black"
+                       FontSize="25"
+                       Text="{Binding Protein}" Grid.Row="1" Grid.Column="1"/>
+                        <Label Text="脂肪:"
+                       TextColor="Black"
+                       FontSize="25" Grid.Row="2" Grid.Column="0"/>
+                        <Entry x:Name="txtFat"
+                       TextColor="black"
+                       FontSize="25"
+                       Text="{Binding Fat}" Grid.Row="2" Grid.Column="1"/>
+                        <Label Text="膽固醇:"
+                       TextColor="Black"
+                       FontSize="25" Grid.Row="3" Grid.Column="0"/>
+                        <Entry x:Name="txtCholes"
+                       TextColor="black"
+                       FontSize="25"
+                       Text="{Binding Choles}" Grid.Row="3" Grid.Column="1"/>
+                        <Label Text="鈉:"
+                       TextColor="Black"
+                       FontSize="25" Grid.Row="4" Grid.Column="0"/>
+                        <Entry x:Name="txtSodium"
+                       TextColor="black"
+                       FontSize="25"
+                       Text="{Binding Sodium}" Grid.Row="4" Grid.Column="1"/>
 
-                    <Button Text="新增"
-                        FontSize="30"
-                        BackgroundColor="MediumAquamarine"
-                        Clicked="BtnAdd_Clicked"/>
+                    </Grid>
                 </StackLayout>
             </ScrollView>
+            <Button x:Name="btnAdd"
+                            Text="新增" FontSize="30"
+                            BackgroundColor="MediumAquamarine"
+                            HorizontalOptions="FillAndExpand"
+                            Clicked="BtnAdd_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

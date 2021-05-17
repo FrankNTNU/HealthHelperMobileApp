@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthHelperMobileApp.PageComment">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="HealthHelper 評論" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   FontSize="30"
+                   BackgroundColor="DarkGreen"
+                   Padding="10"/>
+            <Button Text="新增" BackgroundColor="MediumAquamarine"
+                    TextColor="Black" FontSize="30"
+                    Clicked="BtnAdd_Clicked"/>
+            <Label x:Name="lblHeader" Text="" BackgroundColor="LightGray" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" Padding="10"/>
+            <CollectionView x:Name="cvComment" 
+                            ItemsSource="{Binding CComment}"
+                            SelectedItem="{Binding CComment}"
+                            SelectionMode="Single"
+                            SelectionChanged="CvComment_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <StackLayout BackgroundColor="#c7ecff">
+                                <StackLayout Orientation="Horizontal" Padding="5">
+                                    <Label Text="評論者" TextColor="Black" FontSize="20" />
+                                    <Label Text="{Binding MemberName}" TextColor="Black" FontSize="20" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Padding="5">
+                                    <Label Text="日期" TextColor="Black" FontSize="20"/>
+                                    <Label Text="{Binding AddDateString}" TextColor="Black" FontSize="20" />
+                                </StackLayout>
+                            </StackLayout>
+                            
+                            <StackLayout Padding="8">
+                                <Label Text="標題" TextColor="Black" FontSize="20"/>
+                                <Label Text="{Binding Title}" TextColor="red" FontSize="20" />
+                                <Label Text="內容" TextColor="Black" FontSize="20"/>
+                                <Label Text="{Binding Content}" TextColor="blue" FontSize="20"/>
+                            </StackLayout>
+                            
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -20,30 +20,35 @@ namespace HealthHelperMobileApp
 
         private void BtnAdd_Clicked(object sender, EventArgs e)
         {
-            double portion;
+            CMeal meal = new CMeal();
+            CNutrient nutrient = new CNutrient();
             if (string.IsNullOrEmpty(txtName.Text) ||
-                string.IsNullOrEmpty(txtCalories.Text) ||
-                string.IsNullOrEmpty(txtPortion.Text))
+               string.IsNullOrEmpty(txtCalories.Text) ||
+               string.IsNullOrEmpty(txtPortion.Text))
             {
                 DisplayAlert("錯誤", "請填入所有欄位", "返回");
             }
-            else if (!double.TryParse(txtCalories.Text, out portion))
+            else if (!double.TryParse(txtCalories.Text, out double calories))
             {
                 DisplayAlert("錯誤", "請輸入正確的卡路里格式", "返回");
             }
             else
             {
-                CMeal meal = new CMeal()
-                {
-                    Name = txtName.Text,
-                    Calories = portion,
-                    Portion = txtPortion.Text
-                };
+                meal.Name = txtName.Text;
+                meal.Calories = calories;
+                meal.Portion = txtPortion.Text;
+                meal.Image = txtImage.Text;
                 new CMealFactory().Add(meal);
-                DisplayAlert("訊息", "已成功新增餐點", "確認");
+                nutrient.Carbs = string.IsNullOrEmpty(txtCarbs.Text) ? "0" : txtCarbs.Text;
+                nutrient.Fat = string.IsNullOrEmpty(txtFat.Text) ? "0" : txtFat.Text;
+                nutrient.Choles = string.IsNullOrEmpty(txtCholes.Text) ? "0" : txtCholes.Text;
+                nutrient.Protein = string.IsNullOrEmpty(txtProtein.Text) ? "0" : txtProtein.Text;
+                nutrient.Sodium = string.IsNullOrEmpty(txtSodium.Text) ? "0" : txtSodium.Text;
+                nutrient.MealID = meal.ID;
+                new CNutrientFactory().Add(nutrient);
+                DisplayAlert("訊息", "已更新成功", "確認");
                 Navigation.PopAsync();
             }
-           
         }
     }
 }

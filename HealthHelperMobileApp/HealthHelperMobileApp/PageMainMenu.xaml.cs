@@ -15,6 +15,7 @@ namespace HealthHelperMobileApp
         public PageMainMenu()
         {
             InitializeComponent();
+
         }
 
         private void BtnMember_Clicked(object sender, EventArgs e)
@@ -27,9 +28,21 @@ namespace HealthHelperMobileApp
             Navigation.PushAsync(new PageMeal());
         }
 
+
         private void btnWorkout_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new PageWorkoutLogList());
+
+        private void BtnLog_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new PageLog());
+
+        }
+
+        private void BtnComment_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new PageCommentBoard());
+
         }
     }
 }

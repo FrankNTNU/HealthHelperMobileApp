@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,19 +18,23 @@ namespace HealthHelperMobileApp
         public PageMeal()
         {
             InitializeComponent();
+            BindingContext = new MealViewModel(this.Navigation);
             
         }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
             cvMeals.ItemsSource = new CMealFactory().GetMeals();
+            keyword.Text = "";
+            btnSort.ImageSource = isAscending ? "arrowUp.png" : "arrowDown.png";
         }
         private void BtnAdd_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new PageAddMeal());
         }
 
-        private void keyword_TextChanged(object sender, TextChangedEventArgs e)
+        private void Keyword_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(keyword.Text))
             {
@@ -44,14 +48,42 @@ namespace HealthHelperMobileApp
 
         private void BtnSort_Clicked(object sender, EventArgs e)
         {
-            cvMeals.ItemsSource = new CMealFactory().GetMeals(keyword.Text, isAscending);
+            if (isLike)
+            {
+                cvMeals.ItemsSource = new CMealFactory().GetLikedMeals(keyword.Text, isAscending);
+                btnSort.ImageSource = isAscending ? "arrowUp.png" : "arrowDown.png";
+
+            }
+            else
+            {
+                cvMeals.ItemsSource = new CMealFactory().GetMeals(keyword.Text, isAscending);
+                btnSort.ImageSource = isAscending ? "arrowUp.png" : "arrowDown.png";
+
+
+            }
             isAscending = !isAscending;
         }
-        private void CvSelectedMeal(object sender, SelectedItemChangedEventArgs e)
+
+        private void CvMeals_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CMeal meal = e.SelectedItem as CMeal;
-            selectedMeal = meal;
-            Navigation.PushAsync(new PageMealDetail());
+            CMeal meal = e.CurrentSelection.First() as CMeal;
+            Navigation.PushAsync(new PageMealDetail(meal));
+        }
+        private bool isLike = false;
+        private void BtnLike_Clicked(object sender, EventArgs e)
+        {
+            isLike = !isLike;
+            if (isLike) cvMeals.ItemsSource = new CMealFactory().GetLikedMeals(keyword.Text, isAscending);
+            else {
+                if (!string.IsNullOrEmpty(keyword.Text))
+                {
+                    cvMeals.ItemsSource = new CMealFactory().GetMeals(keyword.Text);
+                }
+                else
+                {
+                    cvMeals.ItemsSource = new CMealFactory().GetMeals();
+                }
+            }
         }
     }
 }
