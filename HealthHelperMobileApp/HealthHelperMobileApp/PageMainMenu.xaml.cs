@@ -33,6 +33,7 @@ namespace HealthHelperMobileApp
         {
             Navigation.PushAsync(new PageWorkoutLogList());
 
+        }
         private void BtnLog_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new PageLog());

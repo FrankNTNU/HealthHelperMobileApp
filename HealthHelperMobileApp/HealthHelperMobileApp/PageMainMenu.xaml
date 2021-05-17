@@ -23,13 +23,9 @@
                             Clicked="BtnMeal_Clicked"/>
                     <Button Text="運動   "
                             HeightRequest="100" FontSize="35"
-
-                            BackgroundColor="#a6d8ff" 
-                            ImageSource="workout1.png"
-                            Clicked="btnWorkout_Clicked"/>
-
+                            BackgroundColor="#a6d8ff"
+                            Clicked="btnWorkout_Clicked"
                             ImageSource="workout.jpg"/>
-
                     <Button Text="紀錄   " 
                             HeightRequest="100" FontSize="35"
                             TextColor="Black" 

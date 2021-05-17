@@ -70,7 +70,7 @@ namespace HealthHelperMobileApp
             }
 
             CWorkoutLog wl = new CWorkoutLog();
-            wl.MemberID = App.member.ID;
+            wl.MemberID = App.SelectedMember.ID;
             wl.WorkoutID = workout.ID;
             wl.WorkoutHours = hours;
             wl.EditTime = this.dpEditTime.Date;

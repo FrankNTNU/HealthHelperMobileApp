@@ -90,7 +90,7 @@ namespace HealthHelperMobileApp.ViewModels
         {
             get
             {
-                return App.member.Name;
+                return App.SelectedMember.Name;
             }
         }
 
@@ -99,7 +99,7 @@ namespace HealthHelperMobileApp.ViewModels
             get 
             {
                 workoutLogs = App.GetConnection().Table<CWorkoutLog>()
-                    .Where(wl => wl.MemberID == App.member.ID)
+                    .Where(wl => wl.MemberID == App.SelectedMember.ID)
                     .ToListAsync().Result;
                 return workoutLogs.Select(wl => new CWorkoutLogDTO(wl)).ToList();
             }
