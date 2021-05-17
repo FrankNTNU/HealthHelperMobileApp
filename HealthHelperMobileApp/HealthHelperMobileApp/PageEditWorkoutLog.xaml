@@ -31,7 +31,7 @@
                    TextColor="Red"></Label>
             <StackLayout Orientation="Horizontal">
                 <Entry x:Name="txtHours" FontSize="30" Placeholder="運動了多久"
-                   Text="{Binding WorkoutHours, StringFormat='{0:#.00}'}"
+                   Text="{Binding WorkoutHours, StringFormat='{0:0.00}'}"
                    VerticalOptions="Start"
                    HorizontalOptions="FillAndExpand"></Entry>
                 <Label Text="小時" FontSize="30" VerticalOptions="End" HorizontalOptions="End"></Label>
