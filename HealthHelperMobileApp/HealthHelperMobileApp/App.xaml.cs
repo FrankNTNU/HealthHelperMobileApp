@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
 namespace HealthHelperMobileApp
 {
     public partial class App : Application

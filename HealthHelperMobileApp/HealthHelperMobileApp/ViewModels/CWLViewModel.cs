@@ -6,6 +6,7 @@ using System.Text;
 using Xamarin.Forms;
 using Microcharts;
 using SkiaSharp;
+using System.Windows.Input;
 
 namespace HealthHelperMobileApp.ViewModels
 {
@@ -83,6 +84,14 @@ namespace HealthHelperMobileApp.ViewModels
                 Width = 300,
                 Height = 400
             });
+
+            this.MyCommand = new Command(
+                execute: (obj) =>
+                {
+                    CWorkoutLogDTO wl = obj as CWorkoutLogDTO;
+                    (Application.Current as App).MainPage.Navigation.PushAsync(new PageEditWorkoutLog(wl));
+                }
+            );
 
         }
 
@@ -204,6 +213,8 @@ namespace HealthHelperMobileApp.ViewModels
                 return colorSet.ToList();
             }
         }
+
+        public ICommand MyCommand { private set; get; }
 
     }
 

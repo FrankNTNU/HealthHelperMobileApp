@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HealthHelperMobileApp.PageAddWorkoutLog"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+             x:Class="HealthHelperMobileApp.PageEditWorkoutLog"
+             x:Name="EditWorkoutLog"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             BindingContext="{Binding Source={x:Reference EditWorkoutLog}, Path=WL}">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="新增運動紀錄" 
+            <Label Text="編輯運動紀錄" 
                    HorizontalTextAlignment="Center" 
                    TextColor="White"
                    FontSize="30"
@@ -19,7 +21,7 @@
             <Picker x:Name="pkrWC" FontSize="30"
                 ItemDisplayBinding="{Binding Name}"
                 SelectedIndexChanged="pkrWCAL_SelectedIndexChanged"
-                VerticalOptions="Start"  
+                VerticalOptions="Start"
                 HorizontalOptions="FillAndExpand"></Picker>
             <Picker x:Name="pkrWorkout" FontSize="30" Title="運動項目"
                     ItemDisplayBinding="{Binding Name}"
@@ -29,6 +31,7 @@
                    TextColor="Red"></Label>
             <StackLayout Orientation="Horizontal">
                 <Entry x:Name="txtHours" FontSize="30" Placeholder="運動了多久"
+                   Text="{Binding WorkoutHours, StringFormat='{0:0.00}'}"
                    VerticalOptions="Start"
                    HorizontalOptions="FillAndExpand"></Entry>
                 <Label Text="小時" FontSize="30" VerticalOptions="End" HorizontalOptions="End"></Label>
@@ -37,11 +40,16 @@
                    TextColor="Red"></Label>
             <DatePicker x:Name="dpEditTime"
                         MinimumDate="01/01/2021"
-                        MaximumDate="{x:Static sys:DateTime.Now}"></DatePicker>
+                        MaximumDate="{x:Static sys:DateTime.Now}"
+                        Date="{Binding EditTime.Date}"></DatePicker>
             <StackLayout VerticalOptions="EndAndExpand">
-                <Button x:Name="btnSubmit" FontSize="30" Text="送出" BackgroundColor="DodgerBlue" TextColor="White"
-                        Clicked="btnSubmit_Click"
+                <Button x:Name="btnEdit" FontSize="30" Text="修改" BackgroundColor="DodgerBlue" TextColor="White"
+                        Clicked="btnEdit_Click"
                         VerticalOptions="End"></Button>
+                <Button x:Name="btnDelete" FontSize="30" Text="刪除" BackgroundColor="IndianRed" TextColor="White"
+                        Clicked="btnDelete_Click"
+                        VerticalOptions="End">
+                </Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

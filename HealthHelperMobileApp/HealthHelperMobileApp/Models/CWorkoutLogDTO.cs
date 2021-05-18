@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace HealthHelperMobileApp.Models
 {
-    class CWorkoutLogDTO : CWorkoutLog
+    public class CWorkoutLogDTO : CWorkoutLog
     {
         CActivityLevel al;
         CMember member;
